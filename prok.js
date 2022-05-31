@@ -20,6 +20,11 @@ function cargarIncidencias() {
 
 cargarIncidencias();
 
+/*
+    Cambiar Descripcion por orden de averia
+    Orden de reparacion: 
+
+*/
 
 async function generarIncidencia(
     nombre = null,
