@@ -20,16 +20,9 @@ function cargarIncidencias() {
 
 cargarIncidencias();
 
-/*
-    Cambiar Descripcion por orden de averia
-    Orden de reparacion: 
-
-*/
-
 async function generarIncidencia(
     nombre = null,
     descripcion = null,
-    ordenAveria = null,
     recibo = null,
     presupuesto = 0,
     factura = null,
@@ -57,14 +50,21 @@ $('#subirIncidencia').click(function (event) {
 
     event.preventDefault();
 
-    let nombre = document.getElementById('nombreIncidencia').value;
-    let descripcion = document.getElementById('descripcionIncidencia').value;
-    let ordenaveria = document.getElementById('ordenaveriaIncidencia').value;
-    let recibo = document.getElementById('reciboIncidencia').value;
-    let presupuesto = document.getElementById('presupuestoIncidencia').value;
-    let factura = document.getElementById('facturaIncidencia').value;
-    let fecha = document.getElementById('fechaIncidencia').value;
-    let numpuesto = document.getElementById('numpuestoIncidencia').value;
+    /* Datos generales */
+    let empresa = document.getElementById('empresa').value;
+    let areadetrabajo = document.getElementById('areadetrabajo').value;
+    let usuario = document.getElementById('usuario').value;
+    let direccion = document.getElementById('direccion').value;
+    let telefono = document.getElementById('telefono').value;
+    let hogar = document.getElementById('hogar').value;
+    let fechadeentrada = document.getElementById('fechadeentrada').value;
+    let fechadesalida = document.getElementById('fechadesalida').value;
+
+    /** Averia de equipo */
+    let  averiadeequipo = document.getElementById('averiadelequipo').value;
+
+    /** Reparacion del equipo */
+    let reparacion = document.getElementById('reparaciondelequipo').value;
 
     generarIncidencia(
         nombre, descripcion, ordenaveria, recibo, presupuesto, factura, fecha, numpuesto
