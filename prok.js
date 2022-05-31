@@ -13,6 +13,7 @@ function cargarIncidencias() {
             </div>
         `;
     }
+
 }
 
 cargarIncidencias();
@@ -64,4 +65,16 @@ $('#subirIncidencia').click(function (event) {
         cargarIncidencias();
     })
 
+});
+
+// console.log($('.incidencia'))
+
+let inci = $('#incidencias div');
+$('#buscador').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+    inci.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
 });
