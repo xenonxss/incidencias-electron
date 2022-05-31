@@ -52,9 +52,14 @@ form input {
   height: 70%;
 }
 
-#incidencias { 
+#incidencias div{ 
   text-align: left;
   font-size: 25px;
+
+}
+
+#incidencias button{
+  text-align: right;
 }
 
 .p-btn {
