@@ -11,7 +11,7 @@ function cargarIncidencias() {
         listaIncidencias.innerHTML += `
             <div class="incidencia">
                 ${inc["nombre"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
-                <button onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
+                <button class="p-btn" onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
             </div>
         `;
     }
@@ -21,23 +21,35 @@ function cargarIncidencias() {
 cargarIncidencias();
 
 async function generarIncidencia(
-    nombre = null,
-    descripcion = null,
-    recibo = null,
-    presupuesto = 0,
-    factura = null,
-    fecha = null,
-    numeropuesto = null) {
+    empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida,
+    
+    equipo, modelo, serial, componentes,
+    
+    averiadeequipo,
+    
+    reparaciondelequipo) {
 
     incidencia = [{
-        nombre: nombre,
-        descripcion: descripcion,
-        ordenAveria: ordenAveria,
-        recibo: recibo,
-        presupuesto: presupuesto,
-        factura: factura,
-        fecha: fecha,
-        numeropuesto: numeropuesto
+        // datos generales
+        empresa: empresa,
+        areadetrabajo: areadetrabajo,
+        usuario: usuario,
+        direccion: direccion,
+        telefono: telefono,
+        hogar: hogar,
+        fechadeentrada: fechadeentrada,
+        fechadesalida: fechadesalida,
+        equipo: equipo,
+
+        //orden de trabajo
+        equipo: equipo,
+        modelo: modelo,
+        serial: serial,
+        componentes: componentes,
+
+        //averia del equipo
+        averiadeequipo: averiadeequipo,
+        reparaciondelequipo: reparaciondelequipo,
     }];
 
     localStorage.setItem('inc-' + localStorage.length, JSON.stringify(incidencia));
@@ -60,6 +72,12 @@ $('#subirIncidencia').click(function (event) {
     let fechadeentrada = document.getElementById('fechadeentrada').value;
     let fechadesalida = document.getElementById('fechadesalida').value;
 
+    /** Orden de trabajo */
+    let equipo = document.getElementById('equipo').value;
+    let modelo = document.getElementById('modelo').value;
+    let serial = document.getElementById('serial').value;
+    let componentes = document.getElementById('componentes').value;
+
     /** Averia de equipo */
     let  averiadeequipo = document.getElementById('averiadelequipo').value;
 
@@ -67,7 +85,7 @@ $('#subirIncidencia').click(function (event) {
     let reparacion = document.getElementById('reparaciondelequipo').value;
 
     generarIncidencia(
-        nombre, descripcion, ordenaveria, recibo, presupuesto, factura, fecha, numpuesto
+        empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida, averiadeequipo, reparacion
     ).then(() => {
         cargarIncidencias();
     })
