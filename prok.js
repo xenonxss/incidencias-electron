@@ -3,14 +3,18 @@ function cargarIncidencias() {
 
     listaIncidencias = document.getElementById('incidencias');
 
-    listaIncidencias.innerHTML = '';
+    listaIncidencias.innerHTML = `
+    <tr>
+        <td>Empresa</td>
+        <td>Orden de Avería</td>
+    `;
 
     for (let index = 0; index < localStorage.length; index++) {
         inc = localStorage.getItem(`inc-${index}`);
         inc = JSON.parse(inc)[0];
         listaIncidencias.innerHTML += `
             <div class="incidencia">
-                ${inc["nombre"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
+                ${inc["empresa"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
                 <button class="p-btn" onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
             </div>
         `;
@@ -39,7 +43,6 @@ async function generarIncidencia(
         hogar: hogar,
         fechadeentrada: fechadeentrada,
         fechadesalida: fechadesalida,
-        equipo: equipo,
 
         //orden de trabajo
         equipo: equipo,
@@ -85,7 +88,7 @@ $('#subirIncidencia').click(function (event) {
     let reparacion = document.getElementById('reparaciondelequipo').value;
 
     generarIncidencia(
-        empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida, averiadeequipo, reparacion
+        empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida, averiadeequipo, reparacion, equipo, modelo, serial, componentes
     ).then(() => {
         cargarIncidencias();
     })
