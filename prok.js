@@ -1,3 +1,4 @@
+
 function cargarIncidencias() {
 
     listaIncidencias = document.getElementById('incidencias');
@@ -10,6 +11,7 @@ function cargarIncidencias() {
         listaIncidencias.innerHTML += `
             <div class="incidencia">
                 ${inc["nombre"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
+                <button onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
             </div>
         `;
     }
@@ -67,8 +69,6 @@ $('#subirIncidencia').click(function (event) {
 
 });
 
-// console.log($('.incidencia'))
-
 let inci = $('#incidencias div');
 $('#buscador').keyup(function() {
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
@@ -78,3 +78,27 @@ $('#buscador').keyup(function() {
         return !~text.indexOf(val);
     }).hide();
 });
+
+async function vistaDetalladaIncidencia(numIncidencia){
+    
+    place = document.getElementById('incidencia-detallada');
+
+    let inc = localStorage.getItem(`inc-${numIncidencia}`);
+    inc = JSON.parse(inc)[0];
+
+    place.innerHTML = `
+   
+        <h2> ${inc["nombre"]} « ${inc["fecha"]} </h2>
+        <hr>
+        <p>
+        ${inc["descripcion"]} <br>
+        Orden de avería: ${inc["ordenAveria"]} <br>
+        Recibo: ${inc['recibo']} <br>
+        Presupuesto: ${inc["presupuesto"]}€ <br>
+        Numero Puesto: ${inc["numeropuesto"]} <br>
+
+        </p>
+
+    `;
+
+}
