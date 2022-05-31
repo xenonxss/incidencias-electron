@@ -10,6 +10,13 @@ body {background-color: rgb(215, 250, 242);
 
 body{
   background: #f2f2f2;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 100%;
+ 
 }
 
+form input {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 100%;
+    text-align: center;
+}
