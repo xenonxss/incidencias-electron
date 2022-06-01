@@ -57,11 +57,11 @@ form input {
 
   margin: 2% 0% 0% 2%;
 
-  border: solid gray 1px;
-  border-radius: 20px;
+  /* border: solid gray 1px; */
+  /* border-radius: 20px; */
 
-  border-top-right-radius: 0%;
-  border-bottom-right-radius: 0%;
+  /* border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%; */
 
 }
 
