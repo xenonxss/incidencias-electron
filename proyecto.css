@@ -129,3 +129,6 @@ form input {
   border: 0;
   box-shadow: inset 0 1px 1px rgb(255 255 255 / 41%), 0px 2px 3px -2px rgba(0, 0, 0, .3);
 }
+
+
+.table-striped { }
