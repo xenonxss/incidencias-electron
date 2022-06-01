@@ -12,6 +12,7 @@ function cargarIncidencias() {
             <tr class="incidencia" scope="col">
                 ${inc["empresa"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
                 <button class="p-btn" onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
+        
             </tr>
         `;
     }
@@ -127,6 +128,13 @@ async function vistaDetalladaIncidencia(numIncidencia){
 }
 
 $('#abrir-formulario').click(function(event){
+
+    event.preventDefault();
+
     document.getElementById('form-inc').removeAttribute("hidden");
     document.getElementById('main-section').setAttribute("hidden", true);
+})
+
+$('#remove-inc').click(function(event){
+
 })
