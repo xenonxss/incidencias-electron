@@ -86,6 +86,7 @@ $('#subirIncidencia').click(function (event) {
     generarIncidencia(
         empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida, averiadeequipo, reparacion, equipo, modelo, serial, componentes
     ).then(() => {
+        document.getElementById('form-inc').setAttribute('hidden', true);
         cargarIncidencias();
     })
 
@@ -125,5 +126,5 @@ async function vistaDetalladaIncidencia(numIncidencia){
 }
 
 $('#abrir-formulario').click(function(event){
-    $('#form-inc').show();
+    document.getElementById('form-inc').removeAttribute("hidden");
 })
