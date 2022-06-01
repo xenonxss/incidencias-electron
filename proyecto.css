@@ -129,6 +129,7 @@ form input {
 .table-striped {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
+
 }
 
 
@@ -145,5 +146,7 @@ form input {
 
 #main-section{
 
-  margin-left: 2%;
+  margin-left: 0%;
 }
+
+#buscador1 {margin-left: 2%;}
