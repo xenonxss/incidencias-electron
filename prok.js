@@ -127,5 +127,8 @@ async function vistaDetalladaIncidencia(numIncidencia){
         </p>
 
     `;
-
 }
+
+$('#abrir-formulario').click(function(event){
+    $('#form-inc').hide();
+})
