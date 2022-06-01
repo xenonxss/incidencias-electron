@@ -86,6 +86,8 @@ $('#subirIncidencia').click(function (event) {
     generarIncidencia(
         empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida, averiadeequipo, reparacion, equipo, modelo, serial, componentes
     ).then(() => {
+        document.getElementById('form-inc').setAttribute('hidden', true);
+        document.getElementById('main-section').removeAttribute('hidden');
         cargarIncidencias();
     })
 
@@ -125,5 +127,6 @@ async function vistaDetalladaIncidencia(numIncidencia){
 }
 
 $('#abrir-formulario').click(function(event){
-    $('#form-inc').hide();
+    document.getElementById('form-inc').removeAttribute("hidden");
+    document.getElementById('main-section').setAttribute("hidden", true);
 })
