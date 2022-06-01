@@ -125,5 +125,5 @@ async function vistaDetalladaIncidencia(numIncidencia){
 }
 
 $('#abrir-formulario').click(function(event){
-    $('#form-inc').hide();
+    $('#form-inc').show();
 })
