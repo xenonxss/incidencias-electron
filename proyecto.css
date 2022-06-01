@@ -130,3 +130,20 @@ form input {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
 }
+
+
+.p-btn-icon{
+  float: right;
+  margin-right: 2%;
+  margin-top: 2%;
+}
+
+.p-btn { float: right;
+  margin-right: 2%;
+  margin-top: 1%;
+}
+
+#main-section{
+
+  margin-left: 2%;
+}
