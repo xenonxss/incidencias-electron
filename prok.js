@@ -7,6 +7,7 @@ function cargarIncidencias() {
     <tr>
         <td>Empresa</td>
         <td>Orden de Avería</td>
+    </tr>
     `;
 
     for (let index = 0; index < localStorage.length; index++) {
