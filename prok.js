@@ -11,8 +11,8 @@ function cargarIncidencias() {
         listaIncidencias.innerHTML += `
             <tr class="incidencia" scope="col">
                 ${inc["empresa"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
+                <a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia(${index})"><img src="img/trash.svg"></a>
                 <button class="p-btn" onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
-                <a href="#" class="p-btn-icon"><img src="img/trash.svg"></a>
             </tr>
         `;
     }
@@ -112,7 +112,6 @@ async function vistaDetalladaIncidencia(numIncidencia){
     inc = JSON.parse(inc)[0];
 
     place.innerHTML = `
-   
         <h2> ${inc["nombre"]} « ${inc["fecha"]} </h2>
         <hr>
         <p>
@@ -121,10 +120,18 @@ async function vistaDetalladaIncidencia(numIncidencia){
         Recibo: ${inc['recibo']} <br>
         Presupuesto: ${inc["presupuesto"]}€ <br>
         Numero Puesto: ${inc["numeropuesto"]} <br>
-
         </p>
-
     `;
+}
+
+async function borrarIncidencia(numIncidencia){
+
+    localStorage.removeItem(`inc-${numIncidencia}`).then(()=>{
+        cargarIncidencias();
+    })
+
+
+
 }
 
 $('#abrir-formulario').click(function(event){
