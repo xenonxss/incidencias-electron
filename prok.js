@@ -1,14 +1,9 @@
 
 function cargarIncidencias() {
 
-    listaIncidencias = document.getElementById('incidencias');
+    listaIncidencias = document.getElementById('incidencias-lista');
 
-    listaIncidencias.innerHTML = `
-    <tr>
-        <td>Empresa</td>
-        <td>Orden de Avería</td>
-    </tr>
-    `;
+    listaIncidencias.innerHTML = "";
 
     for (let index = 0; index < localStorage.length; index++) {
         inc = localStorage.getItem(`inc-${index}`);
