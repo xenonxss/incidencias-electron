@@ -12,6 +12,7 @@ function cargarIncidencias() {
             <tr class="incidencia" scope="col">
                 ${inc["empresa"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
                 <button class="p-btn" onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
+                <a href="#" class="p-btn-icon"><img src="img/trash.svg"></a>
             </tr>
         `;
     }
