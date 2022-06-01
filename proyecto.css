@@ -126,4 +126,7 @@ form input {
 }
 
 
-.table-striped { }
+.table-striped {
+  background-color: #fa5957;
+  color: white;
+}
