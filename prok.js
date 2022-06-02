@@ -126,8 +126,9 @@ $('#subirIncidencia').click(function (event) {
         form.classList.add('desaparecer');
         setTimeout(() => {
             form.setAttribute('hidden', true);
+            location.reload();
+
         }, 800);
-        cargarIncidencias();
     })
 });
 
@@ -149,13 +150,16 @@ async function vistaDetalladaIncidencia(numIncidencia) {
         element = JSON.parse(element);
         if (element['uid'] == numIncidencia) {
             place.innerHTML = `
-            <h2> ${element["empresa"]} « ${element["fecha"]} </h2>
+            <h2><strong> ${element["empresa"]} ›› ${element["areadetrabajo"]}</strong> </h2>
             <hr>
             <p>
-            Orden de avería: ${element["ordenAveria"]} <br>
-            Recibo: ${element['recibo']} <br>
-            Presupuesto: ${element["presupuesto"]}€ <br>
-            Numero Puesto: ${element["numeropuesto"]} <br>
+            Orden de avería: ${element["averiadeequipo"]} <br>
+            Usuario: ${element['usuario']} <br>
+            Dirección: ${element['direccion']} <br>
+            Teléfono: ${element['telefono']} <br>
+            Hogar: ${element['hogar']} <br>
+            Fecha de Entrada: ${element['fechadeentrada']} <br>
+            Fecha de Salida: ${element['fechadesalida']} <br>
             </p>
             <hr>`;
 
