@@ -80,12 +80,15 @@ async function generarIncidencia(empresa, areadetrabajo, usuario, direccion, tel
 
         //averia del equipo
         "averiadeequipo": averiadeequipo,
-        "reparaciondelequipo": reparaciondelequipo
+        "reparaciondelequipo": reparaciondelequipo,
+
+        //material de reparacion
+        "componentes": [componentes],
     }];
 
     old = localStorage.getItem('inc');
     if (old == null) { old = ""; }
-
+    
     localStorage.removeItem('inc')
     localStorage.setItem('inc', old.concat(JSON.stringify(incidencia)));
 
@@ -176,7 +179,7 @@ async function borrarIncidencia(numIncidencia) {
     incidencias.forEach(element => {
         element = JSON.parse(element);
         // console.log(element['uid'])
-        if (element['uid'] == numIncidencia) {
+        if (element['uid'] == 'MY3ytXkq7ztjlcbj4tOiP7sSEdUOu2Pk') {
             console.log(`[-]Usted desea eliminar la incidencia ${element['nombre']} de uid: ${element['uid']}`)
         } else {
             rejoin = "[" + JSON.stringify(element) + "]";
@@ -227,6 +230,21 @@ Presupuesto: 69€ <br>
 Numero Puesto: 420 <br>
 </p><hr>`;
 
+function validate() {
+    var errorDiv = document.getElementById("errorDiv"),
+            regex = /^[a-z0-9]+$/,
+            str = document.getElementById("inputString").value;
+
+    if ((str.length > 4) && (str.length < 10) && regex.test(str)) {
+       errorDiv.innerHTML = "Fine string";
+       return true;
+    }
+    else {
+       errorDiv.innerHTML = "4 to 10 alphanumerical characters only";
+       return false;
+    }
+ }
+
 function showTime(){
     var date = new Date();
     var h = date.getHours(); // 0 - 23
@@ -255,4 +273,4 @@ function showTime(){
     
 }
 
-showTime();
+// showTime();
