@@ -18,6 +18,7 @@ function cargarIncidencias() {
     <tr class="inc-header">
         <th>Nombre Empresa y descripción:<th>
         <th></th>
+        <th></th>
     <tr>`;
 
     incidencias = getAll();
@@ -165,7 +166,15 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             Fecha de Entrada: ${element['fechadeentrada']} <br>
             Fecha de Salida: ${element['fechadesalida']} <br>
             </p>
-            <hr>`;
+            <hr>
+            <p>
+            Componente:  <br>
+            Empresa:    <br>
+            Fecha   <br>
+            Precio: <br>
+            Unidad: <br>
+            </p>
+            `;
 
             return console.log(`[+]Mostrando información de la incidencia ${JSON.stringify(element)}`)
         } else {
@@ -222,13 +231,10 @@ $('#cancelarForm').click(function (event) {
 listaIncidencias = document.getElementById('incidencia-detallada')
 listaIncidencias.innerHTML += `
         
-<h2> Nombre Incidencia « Fecha </h2>
+<h2> Selecciona una incidencia! </h2>
 <hr>
 <p>
-Orden de avería:  <br>
-Recibo: <br>
-Presupuesto: 69€ <br>
-Numero Puesto: 420 <br>
+<img src="img/linux.png" style="width: 100%;">
 </p><hr>`;
 
 function validate() {

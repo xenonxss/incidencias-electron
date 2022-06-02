@@ -45,13 +45,6 @@
             </ul>
         </div>
     </nav>
-    <div class="left-side-bar">
-        <h3>Filtros</h3>
-        <span id="buscador1">
-            Buscador
-            <input type="search" id="buscador">
-        </span>
-    </div>
     <div>
         <form id="form-inc" class="" onsubmit="return validate();" hidden>
             <h3>Datos Generales</h3>
@@ -123,9 +116,19 @@
                 <input type="button" value="Cerrar" id="cancelarForm">
             </div>
         </form>
+
         <section id="main-section">
             <div id="contenidos">
-                <table class="columna table table-striped" id="incidencias-lista"></table>
+                <div class="oolumna left-side-bar">
+                    <h3>Filtros</h3>
+                    <span id="buscador1">
+                        Buscador
+                        <input type="search" id="buscador">
+                    </span>
+                </div>
+                <div class="columna">
+                    <table class="table table-striped" id="incidencias-lista"></table>
+                </div>
                 <div class="columna" id="incidencia-detallada"></div>
             </div>
         </section>
