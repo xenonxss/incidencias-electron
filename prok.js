@@ -14,7 +14,12 @@ function getAll() {
 function cargarIncidencias() {
 
     listaIncidencias = document.getElementById('incidencias-lista');
-    listaIncidencias.innerHTML = "";
+    listaIncidencias.innerHTML = `
+    <tr class="inc-header">
+        <th>Nombre Empresa y descripción:<th>
+        <th></th>
+        <th><button id="abrir-formulario">Registrar incidencia</button></th>
+    <tr>`;
 
     incidencias = getAll();
 
@@ -25,12 +30,11 @@ function cargarIncidencias() {
         listaIncidencias.innerHTML += `
         
         <tr class="incidencia" scope="col">
-            <span>${element['empresa']} | ${element['averiadeequipo']}</span>
-            <a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a>
-            <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver incidencia</button>
-        </tr>
-        
-        `;
+            <th>${element['empresa']}</th>
+            <th>${element['averiadeequipo']}</th>
+            <th><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></th>
+            <th><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver incidencia</button></th>
+        </tr>`;
     });
 }
 
@@ -90,7 +94,7 @@ async function generarIncidencia(empresa, areadetrabajo, usuario, direccion, tel
 
 $('#subirIncidencia').click(function (event) {
 
-    // event.preventDefault();
+    event.preventDefault();
 
     /* Datos generales */
     let empresa = document.getElementById('empresa').value;
@@ -112,10 +116,17 @@ $('#subirIncidencia').click(function (event) {
     let reparacion = document.getElementById('reparaciondelequipo').value;
 
     generarIncidencia(
-        empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida, averiadeequipo, reparacion, equipo, modelo, serial, componentes
+        empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida,
+        equipo, modelo, serial, componentes,
+        averiadeequipo,
+        reparacion
     ).then(() => {
-        document.getElementById('form-inc').setAttribute('hidden', true);
-        document.getElementById('main-section').removeAttribute('hidden');
+        form = document.getElementById('form-inc')
+        form.classList.remove('aparecer');
+        form.classList.add('desaparecer');
+        setTimeout(() => {
+            form.setAttribute('hidden', true);
+        }, 800);
         cargarIncidencias();
     })
 });
@@ -136,7 +147,6 @@ async function vistaDetalladaIncidencia(numIncidencia) {
 
     incidencias.forEach(element => {
         element = JSON.parse(element);
-
         if (element['uid'] == numIncidencia) {
             place.innerHTML = `
             <h2> ${element["empresa"]} « ${element["fecha"]} </h2>
@@ -149,7 +159,7 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             </p>
             <hr>`;
 
-            return console.log(`[+]Mostrando información de la incidencia ${element['uid']}`)
+            return console.log(`[+]Mostrando información de la incidencia ${JSON.stringify(element)}`)
         } else {
             console.log(`[-]No se ha encontrado la incidencia ${numIncidencia}`)
         }
@@ -177,10 +187,28 @@ async function borrarIncidencia(numIncidencia) {
 
 $('#abrir-formulario').click(function (event) {
     form = document.getElementById('form-inc')
+    console.log(form)
     form.removeAttribute("hidden");
+    console.log(form)
+    form.classList.remove('desaparecer');
     form.classList.add('aparecer');
-    document.getElementById('main-section').setAttribute("hidden", true);
+    console.log(form)
+    // document.getElementById('main-section').setAttribute("hidden", true);
 })
+
+$('#limpiarCampos').click(function (event) {
+    $('#form-inc')[0].reset();
+})
+
+$('#cancelarForm').click(function (event) {
+    form = document.getElementById('form-inc')
+    form.classList.add('desaparecer');
+    setTimeout(() => {
+        form.setAttribute('hidden', true);
+    }, 800);
+
+    form.classList.add('desaparecer');
+});
 
 
 listaIncidencias = document.getElementById('incidencia-detallada')

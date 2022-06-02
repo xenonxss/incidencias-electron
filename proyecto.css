@@ -8,6 +8,9 @@
 }
 
 body {
+  margin: 0px;
+  padding: 0px;
+
   background-color: rgb(215, 250, 242);
   background: #f2f2f2;
   font-family: 'Ubuntu', sans-serif;
@@ -69,33 +72,52 @@ body {
 
 @keyframes slide-out-bck-center{0%{transform:translateZ(0);opacity:1}100%{transform:translateZ(-1100px);opacity:0}}
 
-
 #form-inc {
-  margin: 0% 2% 0% 2%;
+  position: absolute;
+
+  left: 10%;
+  width: 80%;
+  height: 75%;
+
+  margin: 5% 0% 0% 0%;
+
   background-color: rgb(218, 218, 218);
   border: 4px groove rgb(187, 187, 187);
+  overflow-y:scroll;
+
+  font-size: 150%;
 }
 
 #form-inc h3 {
-  margin: 2% 0% 0% 2%;
+  margin: 3% 0% 0% 2%;
+  font-size: 160%;
 }
 
-#datos-generales span {
+#form-inc span {
   margin: 0% 0% 0% 5%;
 }
 
 form input {
   margin: 2% 0% 0% 0%;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 100%;
   text-align: left;
+}
+
+#btn-form-inc{
+  text-align: center;
 }
 
 #incidencia-detallada {
   background-color: white;
+  max-width: 50%;
 }
 #incidencia-detallada h2, p{
   margin: 2% 2% 2% 2%;
+}
+
+#incidencia-lista{
+  min-width: 50%;
+  max-width: 50%;
 }
 
 #incidencias-lista span{
@@ -104,7 +126,6 @@ form input {
 }
 
 #incidencias-lista tr{
-  border: 1px solid gray;
 }
 
 #incidencias div {
@@ -194,5 +215,13 @@ form input {
   margin-left: 2%;
 }
 #abrir-formulario{
-  float: right;
+  float: right; 
+}
+
+.left-side-bar{
+  position: absolute;
+  border: 1px solid black;
+  float: left;
+  max-width: 15%;
+  height: 100%;
 }
