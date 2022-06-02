@@ -1,60 +1,97 @@
+function getAll() {
+    let get = localStorage.getItem('inc');
+    function replaceAll(string, search, replace) {
+        return string.split(search).join(replace);
+    }
+
+    /** NO BORRAR ISMA */
+    incidencias_todas = replaceAll(get, ']', '');
+    incidencias_todas = incidencias_todas.split('[');
+    // console.log(JSON.parse(incidencias_todas[0]))
+
+    return incidencias_todas;
+}
 
 function cargarIncidencias() {
 
     listaIncidencias = document.getElementById('incidencias-lista');
-
     listaIncidencias.innerHTML = "";
 
-    for (let index = 0; index < localStorage.length; index++) {
-        inc = localStorage.getItem(`inc-${index}`);
-        inc = JSON.parse(inc)[0];
-        listaIncidencias.innerHTML += `
-            <tr class="incidencia" scope="col">
-                ${inc["empresa"]} | ${inc['descripcion']} | Fecha: ${inc['fecha']}
-                <a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia(${index})"><img src="img/trash.svg"></a>
-                <button class="p-btn" onclick="vistaDetalladaIncidencia(${index})">Ver incidencia</button>
-            </tr>
-        `;
-    }
+    incidencias = getAll();
 
+    incidencias.forEach(element => {
+        listaIncidencias.innerHTML += `
+        <tr class="incidencia" scope="col">
+            ${element['nombre']}
+            <a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia(${element['uid']})"><img src="img/trash.svg"></a>
+            <button class="p-btn" onclick="vistaDetalladaIncidencia(${element['uid']}})">Ver incidencia</button>
+        </tr>
+    `;
+    });
 }
 
-cargarIncidencias();
+if (localStorage.getItem('inc') == null) {
+    console.log('[i]No hay ninguna incidencia almacenada')
+} else {
+    cargarIncidencias();
+}
 
 async function generarIncidencia(
     empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida,
-    
+
     equipo, modelo, serial, componentes,
-    
+
     averiadeequipo,
-    
+
     reparaciondelequipo) {
+
+    function makeid(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() *
+                charactersLength));
+        }
+        return result;
+    }
 
     incidencia = [{
         // datos generales
-        empresa: empresa,
-        areadetrabajo: areadetrabajo,
-        usuario: usuario,
-        direccion: direccion,
-        telefono: telefono,
-        hogar: hogar,
-        fechadeentrada: fechadeentrada,
-        fechadesalida: fechadesalida,
+        "uid": makeid(32).toString(),
+        "empresa": empresa,
+        "areadetrabajo": areadetrabajo,
+        "usuario": usuario,
+        "direccion": direccion,
+        "telefono": telefono,
+        "hogar": hogar,
+        "fechadeentrada": fechadeentrada,
+        "fechadesalida": fechadesalida,
 
         //orden de trabajo
-        equipo: equipo,
-        modelo: modelo,
-        serial: serial,
-        componentes: componentes,
+        "equipo": equipo,
+        "modelo": modelo,
+        "serial": serial,
+        "componentes": componentes,
 
         //averia del equipo
-        averiadeequipo: averiadeequipo,
-        reparaciondelequipo: reparaciondelequipo,
+        "averiadeequipo": averiadeequipo,
+        "reparaciondelequipo": reparaciondelequipo
     }];
+    // console.log(incidencia)
 
-    localStorage.setItem('inc-' + localStorage.length, JSON.stringify(incidencia));
+    old = localStorage.getItem('inc');
 
-    return console.log('[+]Incidencia Agregada!')
+    if (old == null) {
+        old = "";
+    } else {
+        old = old;
+    }
+
+    localStorage.removeItem('inc')
+    localStorage.setItem('inc', old.concat(JSON.stringify(incidencia)));
+
+    return
 }
 
 
@@ -79,7 +116,7 @@ $('#subirIncidencia').click(function (event) {
     let componentes = document.getElementById('componentes').value;
 
     /** Averia de equipo */
-    let  averiadeequipo = document.getElementById('averiadelequipo').value;
+    let averiadeequipo = document.getElementById('averiadelequipo').value;
 
     /** Reparacion del equipo */
     let reparacion = document.getElementById('reparaciondelequipo').value;
@@ -91,50 +128,48 @@ $('#subirIncidencia').click(function (event) {
         document.getElementById('main-section').removeAttribute('hidden');
         cargarIncidencias();
     })
-
 });
 
 let inci = $('#incidencias div');
-$('#buscador').keyup(function() {
+$('#buscador').keyup(function () {
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-    
-    inci.show().filter(function() {
+
+    inci.show().filter(function () {
         var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
         return !~text.indexOf(val);
     }).hide();
 });
 
-async function vistaDetalladaIncidencia(numIncidencia){
-    
+async function vistaDetalladaIncidencia(numIncidencia) {
+
     place = document.getElementById('incidencia-detallada');
 
-    let inc = localStorage.getItem(`inc-${numIncidencia}`);
-    inc = JSON.parse(inc)[0];
+    incidencias = getAll();
 
-    place.innerHTML = `
-        <h2> ${inc["nombre"]} « ${inc["fecha"]} </h2>
+    incidencias.forEach(element => {
+        place.innerHTML = `
+   
+        <h2> ${element["nombre"]} « ${element["fecha"]} </h2>
         <hr>
         <p>
-        ${inc["descripcion"]} <br>
-        Orden de avería: ${inc["ordenAveria"]} <br>
-        Recibo: ${inc['recibo']} <br>
-        Presupuesto: ${inc["presupuesto"]}€ <br>
-        Numero Puesto: ${inc["numeropuesto"]} <br>
+        ${element["descripcion"]} <br>
+        Orden de avería: ${element["ordenAveria"]} <br>
+        Recibo: ${element['recibo']} <br>
+        Presupuesto: ${element["presupuesto"]}€ <br>
+        Numero Puesto: ${element["numeropuesto"]} <br>
+
         </p>
+
     `;
-}
-
-async function borrarIncidencia(numIncidencia){
-
-    localStorage.removeItem(`inc-${numIncidencia}`).then(()=>{
-        cargarIncidencias();
-    })
-
-
+    });
 
 }
 
-$('#abrir-formulario').click(function(event){
+async function borrarIncidencia(numIncidencia) {
+    localStorage.removeItem(`inc-${numIncidencia}`);
+}
+
+$('#abrir-formulario').click(function (event) {
     document.getElementById('form-inc').removeAttribute("hidden");
     document.getElementById('main-section').setAttribute("hidden", true);
 })
