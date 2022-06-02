@@ -12,6 +12,7 @@ body {
   background: #f2f2f2;
   font-family: 'Ubuntu', sans-serif;
   font-size: 100%;
+  overflow-y: hidden;
 }
 
 /**
@@ -23,7 +24,6 @@ body {
   width: 50%;
 }
 
-/* Clear floats after the columns */
 .contenidos:after {
   content: "";
   display: table;
@@ -92,10 +92,7 @@ form input {
 }
 
 #incidencia-detallada {
-  text-align: left;
-  font-size: 25px;
-  width: 50%;
-  height: 70%;
+  border: 2px solid gray;
 }
 
 #incidencias {
