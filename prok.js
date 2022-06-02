@@ -16,9 +16,8 @@ function cargarIncidencias() {
     listaIncidencias = document.getElementById('incidencias-lista');
     listaIncidencias.innerHTML = `
     <tr class="inc-header">
-        <th>Nombre Empresa y descripción:<th>
-        <th></th>
-        <th></th>
+        <th colspan="1">Empresa</th>
+        <th colspan="2">descripción</th>
     <tr>`;
 
     incidencias = getAll();
