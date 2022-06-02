@@ -56,7 +56,10 @@
                         <a class="dropdown-item">One more separated link</a>
                     </div>
     </nav>
-    <br>
+    <div class="left-side-bar" style="width:25%">
+        <h3 class="w3-bar-item">Filtros</h3>
+        
+    </div>
     <br>
     <div>
         <form id="form-inc" class="" hidden>
@@ -65,7 +68,7 @@
             <div id="datos-generales">
                 <span>
                     Nombre Empresa
-                    <input type="text" id="empresa" style="width : 7%; ">
+                    <input type="text" id="empresa" style="width : 7%;" required>
                 </span>
                 <span>
                     Area de Trabajo
@@ -110,7 +113,7 @@
             Componentes
             <input type="text" id="componentes">
             <h3>Averia de equipo</h3>
-            <input type="text" id="averiadelequipo">
+            <input type="text" id="averiadelequipo" required />
             <h3>Reparacion del equipo</h3>
             <input type="text" id="reparaciondelequipo">
             <!---->
@@ -121,17 +124,16 @@
                 Buscador
                 <input type="search" id="buscador">
             </span>
-
             <button id="abrir-formulario">Registrar incidencia</button>
 
             <div id="contenidos">
-                <div class="columna" id="incidencias">
+                <div class="columna">
                     <table class="table table-striped" id="incidencias-lista"></table>
                 </div>
                 <div class="columna" id="incidencia-detallada"></div>
             </div>
+        </section>
     </div>
-    </section>
 
 </body>
 

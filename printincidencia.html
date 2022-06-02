@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="cositas">
+        <div class="row">
+            <table>
+                <caption>
+                    <h2><strong><u>Datos Generales</u></strong></h2>
+                </caption>
+                <tr>
+                    <th>Empresa</th>
+                    <th id="empresa" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Area de Trabajo</th>
+                    <th id="areadetrabajo" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Usuario</th>
+                    <th id="usuario" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Direccion</th>
+                    <th id="direccion" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Telefono</th>
+                    <th id="telefono" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Hogar</th>
+                    <th id="hogar" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Fecha de Entrada</th>
+                    <th id="fechadeentrada" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Fecha de Salida</th>
+                    <th id="fechadesalida" class="l">
+
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <table>
+                <caption>
+                    <h2><strong><u>Orden de Trabajo</u></strong></h2>
+                </caption>
+                <tr>
+                    <th>Equipo</th>
+                    <th id="equipo" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Modelo</th>
+                    <th id="modelo" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Serial</th>
+                    <th id="serial" class="l">
+
+                    </th>
+                </tr>
+                <tr>
+                    <th>Componentes</th>
+                    <th id="componentes" class="l">
+
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <h2><strong><u>Averia del Equipo</u></strong></h2>
+    <p id="averiadelequipo" class="texto"></p>
+    <hr>
+    <h2><strong><u>Reparacion del Equipo</u></strong></h2>
+    <p id="reparaciondelequipo" class="texto"></p>
+    <hr>
+    <table class="l-table">
+        <caption>
+            <h2><strong><u>Material de Reparacion</u></strong></h2>
+        </caption>
+        <tr>
+            <th>Componente</th>
+            <th>Empresa</th>
+            <th>Fecha</th>
+            <th>Precio</th>
+            <th>Unidad</th>
+        </tr>
+        <tr>
+            <th id="componente"></th>
+            <th id="empresas"></th>
+            <th id="fecha"></th>
+            <th id="precio"></th>
+            <th id="unidad"></th>
+        </tr>
+    </table>
+    <br>
+    <h5><strong><u>Firma del Usuario</u></strong></h5>
+    <div class="firma"><br><br><br><br><br></div>
+</body>
+</html>
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    .l {
+        width: 70%;
+    }
+
+    .row {
+        float: left;
+        width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .cositas:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .texto {
+        font-size: large;
+    }
+
+    .l-table{
+        width: 100%;
+    }
+
+    h5{
+        text-align: right;
+    }
+
+    .firma{
+        float: right;
+        border: 3px solid black;
+        width: 15%;
+        
+    }
+</style>
+<script>
+    
+    print()
+</script>

@@ -23,11 +23,14 @@ function cargarIncidencias() {
         element = JSON.parse(element);
 
         listaIncidencias.innerHTML += `
+        
         <tr class="incidencia" scope="col">
-            ${element['empresa']} | ${element['averiadeequipo']}
+            <span>${element['empresa']} | ${element['averiadeequipo']}</span>
             <a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a>
             <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver incidencia</button>
-        </tr>`;
+        </tr>
+        
+        `;
     });
 }
 
@@ -87,7 +90,7 @@ async function generarIncidencia(empresa, areadetrabajo, usuario, direccion, tel
 
 $('#subirIncidencia').click(function (event) {
 
-    event.preventDefault();
+    // event.preventDefault();
 
     /* Datos generales */
     let empresa = document.getElementById('empresa').value;
@@ -117,7 +120,7 @@ $('#subirIncidencia').click(function (event) {
     })
 });
 
-let inci = $('#incidencias div');
+let inci = $('#incidencias-lista tr');
 $('#buscador').keyup(function () {
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
     inci.show().filter(function () {
@@ -143,7 +146,8 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             Recibo: ${element['recibo']} <br>
             Presupuesto: ${element["presupuesto"]}€ <br>
             Numero Puesto: ${element["numeropuesto"]} <br>
-            </p>`;
+            </p>
+            <hr>`;
 
             return console.log(`[+]Mostrando información de la incidencia ${element['uid']}`)
         } else {
@@ -177,3 +181,17 @@ $('#abrir-formulario').click(function (event) {
     form.classList.add('aparecer');
     document.getElementById('main-section').setAttribute("hidden", true);
 })
+
+
+listaIncidencias = document.getElementById('incidencia-detallada')
+listaIncidencias.innerHTML += `
+        
+<h2> Nombre Incidencia « Fecha </h2>
+<hr>
+<p>
+Orden de avería:  <br>
+Recibo: <br>
+Presupuesto: 69€ <br>
+Numero Puesto: 420 <br>
+</p><hr>`;
+

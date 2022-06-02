@@ -92,15 +92,19 @@ form input {
 }
 
 #incidencia-detallada {
-  border: 2px solid gray;
+  background-color: white;
+}
+#incidencia-detallada h2, p{
+  margin: 2% 2% 2% 2%;
 }
 
-#incidencias {
-  margin: 2% 0% 0% 2%;
+#incidencias-lista span{
+  font-size: 140%;
+  margin: 2% 2% 2% 2%;
 }
 
-#incidencias tr {
-  background-color: black;
+#incidencias-lista tr{
+  border: 1px solid gray;
 }
 
 #incidencias div {
@@ -182,9 +186,13 @@ form input {
 }
 
 #main-section {
-  margin-left: 0%;
+  float: right;
+  width: 85%;
 }
 
 #buscador1 {
   margin-left: 2%;
+}
+#abrir-formulario{
+  float: right;
 }
