@@ -32,7 +32,6 @@ body {
 
 .columna {
   float: left;
-  overflow: auto;
   width: 40%;
 }
 
@@ -213,10 +212,9 @@ p {
 .table-striped {
   background-color: #ffffff;
   color: black;
-  overflow: visible;
 }
 .table-striped th{
-  padding: 5px 0px 0px 70px;
+  padding: 10px 0px 0px 15px;
 }
 
 th{
