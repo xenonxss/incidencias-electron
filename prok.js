@@ -18,14 +18,14 @@ function cargarIncidencias() {
     <tr class="inc-header">
         <th>Nombre Empresa y descripción:<th>
         <th></th>
-        <th><button id="abrir-formulario">Registrar incidencia</button></th>
     <tr>`;
 
     incidencias = getAll();
 
     incidencias.forEach(element => {
-
+        console.log(element)
         element = JSON.parse(element);
+
 
         listaIncidencias.innerHTML += `
         
@@ -80,11 +80,15 @@ async function generarIncidencia(empresa, areadetrabajo, usuario, direccion, tel
 
         //averia del equipo
         "averiadeequipo": averiadeequipo,
-        "reparaciondelequipo": reparaciondelequipo
+        "reparaciondelequipo": reparaciondelequipo,
+
+        //material de reparacion
+        // "componentes": [componentes],
     }];
 
     old = localStorage.getItem('inc');
     if (old == null) { old = ""; }
+
 
     localStorage.removeItem('inc')
     localStorage.setItem('inc', old.concat(JSON.stringify(incidencia)));
@@ -176,7 +180,7 @@ async function borrarIncidencia(numIncidencia) {
     incidencias.forEach(element => {
         element = JSON.parse(element);
         // console.log(element['uid'])
-        if (element['uid'] == numIncidencia) {
+        if (element['uid'] == 'MY3ytXkq7ztjlcbj4tOiP7sSEdUOu2Pk') {
             console.log(`[-]Usted desea eliminar la incidencia ${element['nombre']} de uid: ${element['uid']}`)
         } else {
             rejoin = "[" + JSON.stringify(element) + "]";
@@ -227,32 +231,47 @@ Presupuesto: 69€ <br>
 Numero Puesto: 420 <br>
 </p><hr>`;
 
-function showTime(){
+function validate() {
+    var errorDiv = document.getElementById("errorDiv"),
+        regex = /^[a-z0-9]+$/,
+        str = document.getElementById("inputString").value;
+
+    if ((str.length > 4) && (str.length < 10) && regex.test(str)) {
+        errorDiv.innerHTML = "Fine string";
+        return true;
+    }
+    else {
+        errorDiv.innerHTML = "4 to 10 alphanumerical characters only";
+        return false;
+    }
+}
+
+function showTime() {
     var date = new Date();
     var h = date.getHours(); // 0 - 23
     var m = date.getMinutes(); // 0 - 59
     var s = date.getSeconds(); // 0 - 59
     var session = "AM";
-    
-    if(h == 0){
+
+    if (h == 0) {
         h = 12;
     }
-    
-    if(h > 12){
+
+    if (h > 12) {
         h = h - 12;
         session = "PM";
     }
-    
+
     h = (h < 10) ? "0" + h : h;
     m = (m < 10) ? "0" + m : m;
     s = (s < 10) ? "0" + s : s;
-    
+
     var time = h + ":" + m + ":" + s + " " + session;
     document.getElementById("MyClockDisplay").innerText = time;
     document.getElementById("MyClockDisplay").textContent = time;
-    
+
     setTimeout(showTime, 1000);
-    
+
 }
 
-showTime();
+// showTime();
