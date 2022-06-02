@@ -32,38 +32,42 @@ body {
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-.slide-in-top {
-  -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.aparecer {
+  -webkit-animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-@-webkit-keyframes slide-in-top {
+@-webkit-keyframes slide-in-fwd-center {
   0% {
-    -webkit-transform: translateY(-1000px);
-    transform: translateY(-1000px);
+    -webkit-transform: translateZ(-1400px);
+    transform: translateZ(-1400px);
     opacity: 0;
   }
 
   100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     opacity: 1;
   }
 }
 
-@keyframes slide-in-top {
+@keyframes slide-in-fwd-center {
   0% {
-    -webkit-transform: translateY(-1000px);
-    transform: translateY(-1000px);
+    -webkit-transform: translateZ(-1400px);
+    transform: translateZ(-1400px);
     opacity: 0;
   }
 
   100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     opacity: 1;
   }
 }
+
+.desaparecer{animation:slide-out-bck-center .5s cubic-bezier(.55,.085,.68,.53) both}
+
+@keyframes slide-out-bck-center{0%{transform:translateZ(0);opacity:1}100%{transform:translateZ(-1100px);opacity:0}}
 
 
 #form-inc {
@@ -71,10 +75,12 @@ body {
   background-color: rgb(218, 218, 218);
   border: 4px groove rgb(187, 187, 187);
 }
-#form-inc h3{
-  margin: 1% 0% 0% 2%;
+
+#form-inc h3 {
+  margin: 2% 0% 0% 2%;
 }
-#datos-generales span{
+
+#datos-generales span {
   margin: 0% 0% 0% 5%;
 }
 

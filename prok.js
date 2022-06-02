@@ -19,7 +19,7 @@ function cargarIncidencias() {
     incidencias = getAll();
 
     incidencias.forEach(element => {
-        
+
         element = JSON.parse(element);
 
         listaIncidencias.innerHTML += `
@@ -172,6 +172,8 @@ async function borrarIncidencia(numIncidencia) {
 }
 
 $('#abrir-formulario').click(function (event) {
-    document.getElementById('form-inc').removeAttribute("hidden");
+    form = document.getElementById('form-inc')
+    form.removeAttribute("hidden");
+    form.classList.add('aparecer');
     document.getElementById('main-section').setAttribute("hidden", true);
 })
