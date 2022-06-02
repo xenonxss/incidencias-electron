@@ -9,10 +9,13 @@
 
 body {
   background-color: rgb(215, 250, 242);
+  background: #f2f2f2;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 100%;
 }
 
 /**
-  Columnas div incidencias e incidencia detallada
+  Columnass div incidencias e incidencia detallada
 **/
 
 .columna {
@@ -29,10 +32,44 @@ body {
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-body {
-  background: #f2f2f2;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 100%;
+.slide-in-top {
+  -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+#form-inc {
+  margin: 0% 2% 0% 2%;
+  background-color: rgb(218, 218, 218);
+  border: 4px groove rgb(187, 187, 187);
 }
 
 form input {
@@ -49,28 +86,17 @@ form input {
 }
 
 #incidencias {
-
   margin: 2% 0% 0% 2%;
-
-  /* border: solid gray 1px; */
-  /* border-radius: 20px; */
-
-  /* border-top-right-radius: 0%;
-  border-bottom-right-radius: 0%; */
-
 }
 
-#incidencias tr{
+#incidencias tr {
   background-color: black;
-
 }
 
 #incidencias div {
   text-align: left;
   font-size: 25px;
-
   border-top: solid gray 1px;
-
 }
 
 #incidencias button {
@@ -133,20 +159,22 @@ form input {
 }
 
 
-.p-btn-icon{
+.p-btn-icon {
   float: right;
   margin-right: 2%;
   margin-top: 2%;
 }
 
-.p-btn { float: right;
+.p-btn {
+  float: right;
   margin-right: 2%;
   margin-top: 1%;
 }
 
-#main-section{
-
+#main-section {
   margin-left: 0%;
 }
 
-#buscador1 {margin-left: 2%;}
+#buscador1 {
+  margin-left: 2%;
+}
