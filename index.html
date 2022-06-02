@@ -24,114 +24,112 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 
-<div id="todo">
+<body style="margin: 0px; padding:0px;">
 
-    <body style="margin: 0px; padding:0px;">
+    <nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
+        <a class="navbar-brand" href><img src="img/betania_icon.ico" alt="icono" width="50px"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
-            <a class="navbar-brand" href><img src="img/betania_icon.ico" alt="icono" width="50px"> </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link">Incidencias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Fecha</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">Action</a>
-                            <a class="dropdown-item">Another action</a>
-                            <a class="dropdown-item">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item">Separated link</a>
-                            <a class="dropdown-item">One more separated link</a>
-                        </div>
-        </nav>
-        <br>
-        <br>
-        <div>
-            <form id="form-inc" hidden>
-                <h3>Datos Generales</h3><br>
-                Nombre Empresa
-                <input type="text" id="empresa" style="width : 7%; ">
-
-                Area de Trabajo
-                <input type="text" id="areadetrabajo">
-
-                Usuario
-                <input type="text" id="usuario" style="width : 7%; ">
-
-                Direccion
-                <input type="text" id="direccion" style="width : 7%; ">
-
-                Teléfono
-                <input type="tel" id="telefono" style="width : 5%; ">
-
-                Hogar
-                <input type="text" id="hogar" style="width : 7%;">
-
-                Fecha de Entrada
-                <input type="date" id="fechadeentrada">
-
-                Fecha de Salida
-                <input type="date" id="fechadesalida">
-
-                <br>
-                <h3>Orden de Trabajo</h3>
-                <br>
-                Equipo
-                <input type="text" id="equipo">
-
-                Modelo
-                <input type="text" id="modelo">
-
-                Serial
-                <input type="text" id="serial">
-
-                Componentes
-                <input type="text" id="componentes">
-
-                <br>
-                <h3>Averia de equipo</h3>
-                <input type="text" id="averiadelequipo">
-                <br>
-                <h3>Reparacion del equipo</h3>
-                <br>
-                <input type="text" id="reparaciondelequipo">
-                <br>
-                <!---->
-                <input type="button" value="subir" id="subirIncidencia">
-            </form>
-            <section id="main-section">
-                <span id="buscador1">
-                    Buscador
-                    <input type="search" id="buscador">
-                </span>
-
-                <button id="abrir-formulario">Registrar incidencia</button>
-
-                <div id="contenido">
-
-                    <div class="columna" id="incidencias">
-                        <table class="table table-striped" id="incidencias-lista"></table>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link">Incidencias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Fecha</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">Action</a>
+                        <a class="dropdown-item">Another action</a>
+                        <a class="dropdown-item">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">Separated link</a>
+                        <a class="dropdown-item">One more separated link</a>
                     </div>
-                    <div class="columna" id="incidencia-detallada"></div>
+    </nav>
+    <br>
+    <br>
+    <div>
+        <form id="form-inc" class="slide-in-top">
+            <h3>Datos Generales</h3><br>
+            Nombre Empresa
+            <input type="text" id="empresa" style="width : 7%; ">
 
+            Area de Trabajo
+            <input type="text" id="areadetrabajo">
+
+            Usuario
+            <input type="text" id="usuario" style="width : 7%; ">
+
+            Direccion
+            <input type="text" id="direccion" style="width : 7%; ">
+
+            Teléfono
+            <input type="tel" id="telefono" style="width : 5%; ">
+
+            Hogar
+            <input type="text" id="hogar" style="width : 7%;">
+
+            Fecha de Entrada
+            <input type="date" id="fechadeentrada">
+
+            Fecha de Salida
+            <input type="date" id="fechadesalida">
+
+            <br>
+            <h3>Orden de Trabajo</h3>
+            <br>
+            Equipo
+            <input type="text" id="equipo">
+
+            Modelo
+            <input type="text" id="modelo">
+
+            Serial
+            <input type="text" id="serial">
+
+            Componentes
+            <input type="text" id="componentes">
+
+            <br>
+            <h3>Averia de equipo</h3>
+            <input type="text" id="averiadelequipo">
+            <br>
+            <h3>Reparacion del equipo</h3>
+            <br>
+            <input type="text" id="reparaciondelequipo">
+            <br>
+            <!---->
+            <input type="button" value="subir" id="subirIncidencia">
+        </form>
+        <section id="main-section">
+            <span id="buscador1">
+                Buscador
+                <input type="search" id="buscador">
+            </span>
+
+            <button id="abrir-formulario">Registrar incidencia</button>
+
+            <div id="contenido">
+
+                <div class="columna" id="incidencias">
+                    <table class="table table-striped" id="incidencias-lista"></table>
                 </div>
-        </div>
-        </section>
-</div>
+                <div class="columna" id="incidencia-detallada"></div>
+
+            </div>
+    </div>
+    </section>
+
 </body>
 
 </html>
