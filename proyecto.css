@@ -7,10 +7,12 @@
   --p-btn-scope-action: #212136;
 }
 
+* { padding: 0; margin: 0; }
+
 body {
   margin: 0px;
   padding: 0px;
-
+  height: 100%;
   background-color: rgb(215, 250, 242);
   background: #f2f2f2;
   font-family: 'Ubuntu', sans-serif;
@@ -30,10 +32,12 @@ body {
 
 .columna {
   float: left;
-  width: 33.33%;
+  overflow: auto;
+  width: 40%;
 }
 
 .contenidos:after {
+  display: inline-block;
   content: "";
   display: table;
   clear: both;
@@ -129,9 +133,9 @@ form input {
 #incidencia-detallada {
   font-size: 150%;
   background-color: white;
-  float: right  ;
   height: 100%;
   border-left: 5px gray groove;
+  float: right;
 }
 
 #incidencia-detallada h2,
@@ -209,9 +213,10 @@ p {
 .table-striped {
   background-color: #ffffff;
   color: black;
+  overflow: visible;
 }
 .table-striped th{
-  padding: 5px 0px 0px 60px;
+  padding: 5px 0px 0px 70px;
 }
 
 th{
@@ -229,8 +234,6 @@ th{
   margin-right: 2%;
   margin-top: 1%;
 }
-
-#main-section {}
 
 #buscador1 {
   margin-left: 2%;

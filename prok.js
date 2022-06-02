@@ -17,7 +17,7 @@ function cargarIncidencias() {
     listaIncidencias.innerHTML = `
     <tr class="inc-header">
         <th colspan="1">Empresa</th>
-        <th colspan="2">descripción</th>
+        <th colspan="4">descripción</th>
     <tr>`;
 
     incidencias = getAll();
@@ -229,12 +229,12 @@ $('#cancelarForm').click(function (event) {
 
 listaIncidencias = document.getElementById('incidencia-detallada')
 listaIncidencias.innerHTML += `
-        
+
 <h2> Selecciona una incidencia! </h2>
 <hr>
 <p>
 <img src="img/linux.png" style="width: 100%;">
-</p><hr>`;
+</p>`;
 
 function validate() {
     var errorDiv = document.getElementById("errorDiv"),
