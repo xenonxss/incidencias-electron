@@ -5,20 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>print inciencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="proyecto.css"
+    
 </head>
 
 <body>
+    <img src="img/hogar_b_logo.jpg" width="35%">
+    <br>
     <div class="cositas">
         <div class="row">
             <table>
                 <caption>
-                    <h2><strong><u>Datos Generales</u></strong></h2>
+                    <h2><strong>Datos Generales</strong></h2>
                 </caption>
                 <tr>
                     <th>Empresa</th>
                     <th id="empresa" class="l">
-
+                    
                     </th>
                 </tr>
                 <tr>
@@ -68,7 +75,7 @@
         <div class="row">
             <table>
                 <caption>
-                    <h2><strong><u>Orden de Trabajo</u></strong></h2>
+                    <h2><strong>Orden de Trabajo</strong></h2>
                 </caption>
                 <tr>
                     <th>Equipo</th>
@@ -98,15 +105,15 @@
         </div>
     </div>
     <hr>
-    <h2><strong><u>Averia del Equipo</u></strong></h2>
+    <h2><strong>Averia del Equipo</u></strong></h2>
     <p id="averiadelequipo" class="texto"></p>
     <hr>
-    <h2><strong><u>Reparacion del Equipo</u></strong></h2>
+    <h2><strong>Reparacion del Equipo</u></strong></h2>
     <p id="reparaciondelequipo" class="texto"></p>
     <hr>
     <table class="l-table">
         <caption>
-            <h2><strong><u>Material de Reparacion</u></strong></h2>
+            <h2><strong>Material de Reparacion</strong></h2>
         </caption>
         <tr>
             <th>Componente</th>
@@ -116,7 +123,7 @@
             <th>Unidad</th>
         </tr>
         <tr>
-            <th id="componente"></th>
+            <th id="componente">&nbsp;</th>
             <th id="empresas"></th>
             <th id="fecha"></th>
             <th id="precio"></th>
@@ -124,7 +131,7 @@
         </tr>
     </table>
     <br>
-    <h5><strong><u>Firma del Usuario</u></strong></h5>
+    <h5><strong><u>Firma del Usuario</strong></h5>
     <div class="firma"><br><br><br><br><br></div>
 </body>
 </html>
@@ -133,12 +140,19 @@
         margin: 0px;
         padding: 0px;
         text-align: center;
+        background-color: white;
     }
 
     table,
-    th,
     td {
-        border: 1px solid black;
+        border: 1px solid;
+        border-color:rgb(187, 187, 187);
+        border-radius: 10px;
+        padding: 2px;
+    }
+
+    th { 
+        border-bottom: 1px;
     }
 
     .l {
@@ -150,6 +164,14 @@
         width: 50%;
     }
 
+    img{float: left;
+        overflow: hidden;
+        position: absolute;
+        right: 80%;
+        left: 4%;
+        bottom: 0%;
+    }
+    
     /* Clear floats after the columns */
     .cositas:after {
         content: "";
@@ -159,6 +181,8 @@
 
     .texto {
         font-size: large;
+        font-family: 'Ubuntu', sans-serif;
+        padding-bottom: 2px;
     }
 
     .l-table{
@@ -175,8 +199,17 @@
         width: 15%;
         
     }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    tr {
+  border-bottom: 1pt solid rgb(202, 202, 202);
+    }
 </style>
 <script>
     
     print()
 </script>
+
