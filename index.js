@@ -12,7 +12,7 @@ const createWindow = () => {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('printincidencia.html')
+  mainWindow.loadFile('index.html')
 
 }
 
