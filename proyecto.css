@@ -7,7 +7,10 @@
   --p-btn-scope-action: #212136;
 }
 
-* { padding: 0; margin: 0; }
+* {
+  padding: 0;
+  margin: 0;
+}
 
 body {
   margin: 0px;
@@ -20,28 +23,9 @@ body {
   overflow-y: hidden;
 }
 
-/**
-  Columnass div incidencias e incidencia detallada
-**/
-
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
-
-.columna {
-  float: left;
-  width: 40%;
-}
-
-.contenidos:after {
-  display: inline-block;
-  content: "";
-  display: table;
-  clear: both;
-}
-
+/** 
+  Animaciones
+*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 .aparecer {
@@ -93,19 +77,16 @@ body {
   }
 }
 
+/** Formulario añadir incidencias */
 #form-inc {
   position: absolute;
-
   left: 10%;
   width: 80%;
   height: 75%;
-
   margin: 2% 0% 0% 0%;
-
   background-color: rgb(218, 218, 218);
   border: 4px groove rgb(187, 187, 187);
   overflow-y: scroll;
-
   font-size: 150%;
 }
 
@@ -118,7 +99,7 @@ body {
   margin: 0% 0% 0% 5%;
 }
 
-form input {
+#form-inc input {
   margin: 2% 0% 0% 0%;
   font-family: 'Ubuntu', sans-serif;
   text-align: left;
@@ -139,24 +120,7 @@ form input {
 
 #incidencia-detallada h2,
 p {
-  margin: 5% 2% 2% 2%;
-}
-
-#incidencia-lista {}
-
-#incidencias-lista span {
-  font-size: 140%;
-  margin: 2% 2% 2% 2%;
-}
-
-#incidencias div {
-  text-align: left;
-  font-size: 25px;
-  border-top: solid gray 1px;
-}
-
-#incidencias button {
-  text-align: right;
+  margin: 5% 2% 2% 2%
 }
 
 .p-btn {
@@ -174,7 +138,6 @@ p {
   box-shadow: 0px 2px 3px -2px rgba(0, 0, 0, .3);
   user-select: none;
   cursor: pointer;
-
   width: 200px;
 }
 
@@ -212,12 +175,19 @@ p {
 .table-striped {
   background-color: #ffffff;
   color: black;
-}
-.table-striped th{
-  padding: 10px 0px 0px 15px;
+  overflow-y: auto;
 }
 
-th{
+.table-striped th {
+  padding: 10px 0px 0px 15px;
+  font-size: 25px;
+}
+
+#items-lista{
+  margin: 10px 5px 10px 5px;
+}
+
+th {
   height: 10px;
 }
 
@@ -242,8 +212,36 @@ th{
   float: right;
 }
 
-.left-side-bar {
-  border: 1px solid black;
+/** Responsive para pc*/
+
+  /**
+  Columnass div incidencias e incidencia detallada
+**/
+.columna {
   float: left;
-  overflow: visible
+  width: 50%;
 }
+
+.contenidos:after {
+  display: inline-block;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/** Responsive para movil*/
+@media screen and (max-width: 800px) {
+  body{
+    overflow-y: auto;
+  }
+  .left-side-bar{
+    width: 100%;
+  }
+  .columna{
+    float: none;
+    width: 100%;
+  }
+}
+
+
+

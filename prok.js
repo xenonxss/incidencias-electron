@@ -141,8 +141,11 @@ $('#buscador').keyup(function () {
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
     inci.show().filter(function () {
         var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        console.log(document.getElementById('incidencias-lista').innerHTML)
         return !~text.indexOf(val);
     }).hide();
+
+  
 });
 
 async function vistaDetalladaIncidencia(numIncidencia) {
@@ -209,7 +212,6 @@ $('#abrir-formulario').click(function (event) {
     form.classList.remove('desaparecer');
     form.classList.add('aparecer');
     console.log(form)
-    // document.getElementById('main-section').setAttribute("hidden", true);
 })
 
 $('#limpiarCampos').click(function (event) {
@@ -236,47 +238,7 @@ listaIncidencias.innerHTML += `
 <img src="img/linux.png" style="width: 100%;">
 </p>`;
 
-function validate() {
-    var errorDiv = document.getElementById("errorDiv"),
-        regex = /^[a-z0-9]+$/,
-        str = document.getElementById("inputString").value;
-
-    if ((str.length > 4) && (str.length < 10) && regex.test(str)) {
-        errorDiv.innerHTML = "Fine string";
-        return true;
-    }
-    else {
-        errorDiv.innerHTML = "4 to 10 alphanumerical characters only";
-        return false;
-    }
-}
-
-function showTime() {
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var session = "AM";
-
-    if (h == 0) {
-        h = 12;
-    }
-
-    if (h > 12) {
-        h = h - 12;
-        session = "PM";
-    }
-
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
-
-    setTimeout(showTime, 1000);
-
-}
-
-// showTime();
+let titleTag = document.getElementsByTagName('title')
+setInterval(() => {
+    titleTag.text = 'aa';
+}, 2000);
