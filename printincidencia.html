@@ -133,7 +133,6 @@
     <h5><strong><u>Firma del Usuario</strong></h5>
     <div class="firma"><br><br><br><br><br></div>
 </body>
-
 </html>
 <style>
     body {
@@ -210,5 +209,28 @@
     }
 </style>
 <script>
-    print()
+
+    let currentInc = localStorage.getItem('current-inc');
+    currentInc = JSON.parse(currentInc);
+    console.log('[+]Se ha obtenido la incidencia');
+
+    document.getElementById('empresa').innerHTML = currentInc['empresa'];
+    document.getElementById('areadetrabajo').innerHTML = currentInc['areadetrabajo'];
+    document.getElementById('usuario').innerHTML = currentInc['usuario'];
+    document.getElementById('direccion').innerHTML = currentInc['direccion'];
+    document.getElementById('telefono').innerHTML = currentInc['telefono'];
+    document.getElementById('hogar').innerHTML = currentInc['hogar'];
+    document.getElementById('fechadeentrada').innerHTML = currentInc['fechadeentrada'];
+    document.getElementById('fechadesalida').innerHTML = currentInc['fechadesalida'];
+
+    document.getElementById('equipo').innerHTML = currentInc['equipo'];
+    document.getElementById('modelo').innerHTML = currentInc['modelo'];
+    document.getElementById('serial').innerHTML = currentInc['serial'];
+    document.getElementById('componentes').innerHTML = currentInc['componentes'];
+
+
+    document.getElementById('averiadelequipo').innerHTML = currentInc['averiadeequipo'];
+    document.getElementById('reparaciondelequipo').innerHTML = currentInc['reparaciondelquipo'];
+
+
 </script>

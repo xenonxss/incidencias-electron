@@ -153,6 +153,9 @@ async function vistaDetalladaIncidencia(numIncidencia) {
     incidencias.forEach(element => {
         element = JSON.parse(element);
         if (element['uid'] == numIncidencia) {
+
+            console.log('[+]Incidencia encontrada!')
+
             place.innerHTML = `
             <h2><strong> ${element["empresa"]} / ${element["areadetrabajo"]}</strong> </h2>
             <p>
@@ -169,10 +172,14 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             Componentes: ${element['componentes']}
             </p>`;
 
-            return console.log(`[+]Mostrando información de la incidencia ${JSON.stringify(element)}`)
+            localStorage.setItem("current-inc", JSON.stringify(element))
+
+            return console.log(`[+]Informacion detallada cargada`)
         } else {
-            console.log(`[-]No se ha encontrado la incidencia ${numIncidencia}`)
+            console.log(`[-]No se ha encontrado la incidencia`)
         }
+
+
     });
 }
 
