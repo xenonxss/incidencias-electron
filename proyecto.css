@@ -122,7 +122,7 @@ body {
 
 #incidencia-detallada h2,
 p {
-  margin: 5% 2% 2% 2%
+  margin: 2% 0% 1% 0%;
 }
 
 .p-btn {
@@ -133,7 +133,7 @@ p {
   display: inline-block;
   font-family: -apple-system, "Inter", sans-serif;
   font-size: 1.1rem;
-  margin: .7rem;
+  margin: .2rem;
   padding: .4rem 1.2rem;
   text-decoration: none;
   text-align: center;
@@ -152,7 +152,7 @@ p {
 }
 
 .p-btn.p-btn-sm {
-  padding: .3rem 1.1rem;
+  padding: .1rem 1.1rem;
   font-size: 1rem;
 }
 
@@ -162,7 +162,7 @@ p {
 }
 
 .p-btn.p-btn-lg {
-  padding: 1.2rem 2.8rem;
+  padding: 1.2rem 5rem;
   font-size: 1.8rem;
 }
 

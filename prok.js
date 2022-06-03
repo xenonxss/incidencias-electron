@@ -28,7 +28,7 @@ function cargarIncidencias() {
         <tr class="incidencia" scope="col">
             <td class="t">${element['empresa']}</td>
             <td class="t">${element['averiadeequipo']}</td>
-            <td class="b"><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></td>
+            <td class="b"><a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></td>
             <td class="b" colspan="2"><button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg"></a></td>
             <td class="b" colspan="2"><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button></th>
         </tr>`;
