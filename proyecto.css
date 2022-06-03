@@ -7,32 +7,27 @@
   --p-btn-scope-action: #212136;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   margin: 0px;
   padding: 0px;
-
+  overflow-y: hidden;
+  height: 100%;
+  max-height: 100%;
+  height: 100%;
   background-color: rgb(215, 250, 242);
   background: #f2f2f2;
   font-family: 'Ubuntu', sans-serif;
   font-size: 100%;
-  overflow-y: hidden;
 }
 
-/**
-  Columnass div incidencias e incidencia detallada
-**/
-
-.columna {
-  float: left;
-  width: 50%;
-}
-
-.contenidos:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
+/** 
+  Animaciones
+*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 .aparecer {
@@ -68,24 +63,34 @@ body {
   }
 }
 
-.desaparecer{animation:slide-out-bck-center .5s cubic-bezier(.55,.085,.68,.53) both}
+.desaparecer {
+  animation: slide-out-bck-center .5s cubic-bezier(.55, .085, .68, .53) both
+}
 
-@keyframes slide-out-bck-center{0%{transform:translateZ(0);opacity:1}100%{transform:translateZ(-1100px);opacity:0}}
+@keyframes slide-out-bck-center {
+  0% {
+    transform: translateZ(0);
+    opacity: 1
+  }
 
+  100% {
+    transform: translateZ(-1100px);
+    opacity: 0
+  }
+}
+
+/** Formulario añadir incidencias */
 #form-inc {
   position: absolute;
-
   left: 10%;
   width: 80%;
   height: 75%;
-
-  margin: 5% 0% 0% 0%;
-
+  margin: 2% 0% 0% 0%;
   background-color: rgb(218, 218, 218);
   border: 4px groove rgb(187, 187, 187);
-  overflow-y:scroll;
-
+  overflow-y: scroll;
   font-size: 150%;
+  z-index: 10;
 }
 
 #form-inc h3 {
@@ -97,45 +102,27 @@ body {
   margin: 0% 0% 0% 5%;
 }
 
-form input {
+#form-inc input {
   margin: 2% 0% 0% 0%;
   font-family: 'Ubuntu', sans-serif;
   text-align: left;
 }
 
-#btn-form-inc{
+#btn-form-inc {
   text-align: center;
   margin: 0% 0% 2% 0%;
 }
 
 #incidencia-detallada {
+  font-size: 150%;
   background-color: white;
-  max-width: 50%;
-}
-#incidencia-detallada h2, p{
-  margin: 2% 2% 2% 2%;
+  height: 100%;
+  border-left: 5px gray groove;
 }
 
-#incidencia-lista{
-  min-width: 50%;
-  max-width: 50%;
-}
-
-#incidencias-lista span{
-  font-size: 140%;
-  margin: 2% 2% 2% 2%;
-}
-
-
-
-#incidencias div {
-  text-align: left;
-  font-size: 25px;
-  border-top: solid gray 1px;
-}
-
-#incidencias button {
-  text-align: right;
+#incidencia-detallada h2,
+p {
+  margin: 5% 2% 2% 2%
 }
 
 .p-btn {
@@ -153,6 +140,7 @@ form input {
   box-shadow: 0px 2px 3px -2px rgba(0, 0, 0, .3);
   user-select: none;
   cursor: pointer;
+  width: 100px;
 }
 
 .p-btn:focus {
@@ -186,13 +174,33 @@ form input {
   box-shadow: inset 0 1px 1px rgb(255 255 255 / 41%), 0px 2px 3px -2px rgba(0, 0, 0, .3);
 }
 
-
 .table-striped {
   background-color: #ffffff;
-  color: rgb(0, 0, 0);
-
+  color: black;
+  display: block;
+  table-layout: fixed;
+  height: 80%;
+  width: 100%;
+  overflow-y: scroll;
 }
 
+th,
+td {
+  padding: 10px 0px 0px 15px;
+  width: 10%;
+  font-size: 150%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+
+#items-lista {
+  margin: 10px 5px 10px 5px;
+}
+
+th {
+  height: 10px;
+}
 
 .p-btn-icon {
   float: right;
@@ -206,23 +214,91 @@ form input {
   margin-top: 1%;
 }
 
-#main-section {
-  float: right;
-  width: 85%;
-}
-
 #buscador1 {
   margin-left: 2%;
-}
-#abrir-formulario{
-  float: right; 
+  width: auto;
 }
 
-.left-side-bar{
-  position: absolute;
-  border: 1px solid black;
+#abrir-formulario {
+  float: right;
+}
+
+/** Responsive para pc*/
+
+/**
+  Columnass div incidencias e incidencia detallada
+**/
+.columnadetalle {
+  width: 40%;
+  max-width: 45%;
   float: left;
-  max-width: 15%;
+  overflow: hidden;
+}
+
+.columna {
+  max-width: 60%;
+  width: 60%;
+  position: fixed;
+  right: 0px;
+  float: left;
   height: 100%;
 }
 
+.contenidos:after {
+  display: inline-block;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/** Responsive para movil*/
+@media screen and (max-width: 800px) {
+  .columnadetalle {
+    border-top: 1px solid black;
+    min-width: 100%;
+    height: 100%;
+  }
+  .columnadetalle p{
+    font-size: 80%;
+  }
+
+  .contenidos {
+    display: none;
+    clear: none;
+  }
+
+  .columna {
+    float: none;
+    position: relative;
+    min-height: 300px;
+    height: 30%;
+    max-height: 400px;
+    max-height: 30%;
+    width: 100%;
+    max-width: 99%;
+    overflow-x: hidden;
+  }
+
+  #buscador {
+    width: 70%;
+  }
+
+  .table-striped td .b {
+    text-align: right;
+  }
+
+  .table-striped td .t {
+    text-align: left;
+  }
+
+  .table-striped td {
+    font-size: 12px;
+    min-width: 100%;
+  }
+
+  .table-striped {
+    max-width: 100vh;
+    display: block;
+    max-height: 35vh;
+  }
+}

@@ -1,3 +1,4 @@
+
 function getAll() {
     let get = localStorage.getItem('inc');
     function replaceAll(string, search, replace) {
@@ -14,11 +15,7 @@ function getAll() {
 function cargarIncidencias() {
 
     listaIncidencias = document.getElementById('incidencias-lista');
-    listaIncidencias.innerHTML = `
-    <tr class="inc-header">
-        <th>Nombre Empresa y descripción:<th>
-        <th></th>
-    <tr>`;
+    listaIncidencias.innerHTML = '';
 
     incidencias = getAll();
 
@@ -30,10 +27,10 @@ function cargarIncidencias() {
         listaIncidencias.innerHTML += `
         
         <tr class="incidencia" scope="col">
-            <th>${element['empresa']}</th>
-            <th>${element['averiadeequipo']}</th>
-            <th><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></th>
-            <th><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver incidencia</button></th>
+            <td class="t">${element['empresa']}</td>
+            <td class="t">${element['averiadeequipo']}</td>
+            <td class="b"><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></td>
+            <td class="b" colspan="2"><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button></th>
         </tr>`;
     });
 }
@@ -141,8 +138,11 @@ $('#buscador').keyup(function () {
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
     inci.show().filter(function () {
         var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        console.log(document.getElementById('incidencias-lista').innerHTML)
         return !~text.indexOf(val);
     }).hide();
+
+  
 });
 
 async function vistaDetalladaIncidencia(numIncidencia) {
@@ -155,17 +155,19 @@ async function vistaDetalladaIncidencia(numIncidencia) {
         if (element['uid'] == numIncidencia) {
             place.innerHTML = `
             <h2><strong> ${element["empresa"]} ›› ${element["areadetrabajo"]}</strong> </h2>
-            <hr>
             <p>
+            <strong>Datos Generales</strong><br>
             Orden de avería: ${element["averiadeequipo"]} <br>
             Usuario: ${element['usuario']} <br>
             Dirección: ${element['direccion']} <br>
             Teléfono: ${element['telefono']} <br>
             Hogar: ${element['hogar']} <br>
-            Fecha de Entrada: ${element['fechadeentrada']} <br>
-            Fecha de Salida: ${element['fechadesalida']} <br>
-            </p>
-            <hr>`;
+            Fecha Entrada y Salida: ${element['fechadeentrada']} - ${element['fechadesalida']} <br>
+            Equipo: ${element['equipo']}<br>
+            Modelo: ${element['modelo']}<br>
+            Serial: ${element['serial']}<br>
+            Componentes: ${element['componentes']}
+            </p>`;
 
             return console.log(`[+]Mostrando información de la incidencia ${JSON.stringify(element)}`)
         } else {
@@ -176,11 +178,12 @@ async function vistaDetalladaIncidencia(numIncidencia) {
 
 async function borrarIncidencia(numIncidencia) {
     incidencias = getAll();
+    console.log(incidencias)
     rejoinFinal = "";
     incidencias.forEach(element => {
         element = JSON.parse(element);
         // console.log(element['uid'])
-        if (element['uid'] == 'MY3ytXkq7ztjlcbj4tOiP7sSEdUOu2Pk') {
+        if (element['uid'] == numIncidencia) {
             console.log(`[-]Usted desea eliminar la incidencia ${element['nombre']} de uid: ${element['uid']}`)
         } else {
             rejoin = "[" + JSON.stringify(element) + "]";
@@ -201,7 +204,6 @@ $('#abrir-formulario').click(function (event) {
     form.classList.remove('desaparecer');
     form.classList.add('aparecer');
     console.log(form)
-    // document.getElementById('main-section').setAttribute("hidden", true);
 })
 
 $('#limpiarCampos').click(function (event) {
@@ -221,57 +223,15 @@ $('#cancelarForm').click(function (event) {
 
 listaIncidencias = document.getElementById('incidencia-detallada')
 listaIncidencias.innerHTML += `
-        
-<h2> Nombre Incidencia « Fecha </h2>
+
+<h2> Selecciona una incidencia! </h2>
 <hr>
 <p>
-Orden de avería:  <br>
-Recibo: <br>
-Presupuesto: 69€ <br>
-Numero Puesto: 420 <br>
-</p><hr>`;
+<img src="img/linux.png" style="width: 100%;">
+</p>`;
 
-function validate() {
-    var errorDiv = document.getElementById("errorDiv"),
-        regex = /^[a-z0-9]+$/,
-        str = document.getElementById("inputString").value;
+let titleTag = document.getElementsByTagName('title')
+setInterval(() => {
+    titleTag.text = 'aa';
+}, 2000);
 
-    if ((str.length > 4) && (str.length < 10) && regex.test(str)) {
-        errorDiv.innerHTML = "Fine string";
-        return true;
-    }
-    else {
-        errorDiv.innerHTML = "4 to 10 alphanumerical characters only";
-        return false;
-    }
-}
-
-function showTime() {
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var session = "AM";
-
-    if (h == 0) {
-        h = 12;
-    }
-
-    if (h > 12) {
-        h = h - 12;
-        session = "PM";
-    }
-
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
-
-    setTimeout(showTime, 1000);
-
-}
-
-// showTime();
