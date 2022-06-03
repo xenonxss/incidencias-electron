@@ -22,12 +22,10 @@ function cargarIncidencias() {
     incidencias.forEach(element => {
         element = JSON.parse(element);
 
-
         listaIncidencias.innerHTML += `
-        
         <tr class="incidencia" scope="col">
             <td class="t">${element['empresa']}</td>
-            <td class="t">${element['averiadeequipo']}</td>
+            <td class="t"><strong>${element['equipo']}</strong> → ${element['averiadeequipo']}</td>
             <td class="b"><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></td>
             <td class="b" colspan="2"><button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg"></a></td>
             <td class="b" colspan="2"><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button></th>
@@ -141,8 +139,6 @@ $('#buscador').keyup(function () {
         console.log(document.getElementById('incidencias-lista').innerHTML)
         return !~text.indexOf(val);
     }).hide();
-
-  
 });
 
 async function vistaDetalladaIncidencia(numIncidencia) {
@@ -157,7 +153,7 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             console.log('[+]Incidencia encontrada!')
 
             place.innerHTML = `
-            <h2><strong> ${element["empresa"]} / ${element["areadetrabajo"]}</strong> </h2>
+            <h2><strong> ${element["empresa"]}  / ${element["areadetrabajo"]}</strong> </h2>
             <p>
             <strong>Datos Generales</strong><br>
             Orden de avería: ${element["averiadeequipo"]} <br>
@@ -231,20 +227,12 @@ $('#cancelarForm').click(function (event) {
 listaIncidencias = document.getElementById('incidencia-detallada')
 listaIncidencias.innerHTML += `
 
-<h2> Selecciona una incidencia! </h2>
-<hr>
 <p>
 <img src="img/linux.png" style="width: 100%;">
 </p>`;
 
 function imprimirInc(inc){
-    localStorage.setItem("current-inc", inc);
+    console.log(inc)
+    localStorage.setItem("current-inc", );
     window.location.replace('printincidencia.html');
 }
-
-
-let titleTag = document.getElementsByTagName('title')
-setInterval(() => {
-    titleTag.text = 'aa';
-}, 2000);
-
