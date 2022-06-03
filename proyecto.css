@@ -7,6 +7,15 @@
   --p-btn-scope-action: #212136;
 }
 
+:root {
+  --p-btn1-border: #cacaca;
+  --p-btn1-def-bg: #fff;
+  --p-btn1-def-col: #333230;
+  --p-btn1-dir-col: #242424;
+  --p-btn1-scope-unactive: #212136;
+  --p-btn1-scope-action: #212136;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -19,8 +28,7 @@ body {
   height: 100%;
   max-height: 100%;
   height: 100%;
-  background-color: rgb(215, 250, 242);
-  background: #f2f2f2;
+  background-color: rgb(255, 255, 255);
   font-family: 'Ubuntu', sans-serif;
   font-size: 100%;
 }
@@ -191,6 +199,7 @@ td {
   font-size: 150%;
   text-align: left;
   word-wrap: break-word;
+  background-color: rgb(255, 255, 255);
 }
 
 
@@ -221,6 +230,20 @@ th {
 
 #abrir-formulario {
   float: right;
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+#informacion { 
+  float: right;
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+#ayuda {
+  float: right;
+  font-size: 30px;
+  margin-right: 20px;
 }
 
 /** Responsive para pc*/
@@ -249,6 +272,61 @@ th {
   content: "";
   display: table;
   clear: both;
+}
+
+.p-btn1 {
+  margin-right: 2%;
+  margin-top: 1%;
+  text-align: left;
+}
+
+.p-btn1 {
+  background: var(--p-btn-def-bg);
+  border: 1px solid var(--p-btn-border);
+  border-radius: .3rem;
+  color: var(--p-btn-def-col);
+  display: inline-block;
+  font-family: -apple-system, "Inter", sans-serif;
+  font-size: 1.1rem;
+  margin: .2rem;
+  padding: .4rem 1.2rem;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0px 2px 3px -2px rgba(0, 0, 0, .3);
+  user-select: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+.p-btn1:focus {
+  outline: 2px solid #64baff;
+}
+
+.p-btn1.p-btn1-block {
+  display: block;
+}
+
+.p-btn1.p-btn1-sm {
+  padding: .1rem 1.1rem;
+  font-size: 1rem;
+}
+
+.p-btn1.p-btn1-md {
+  padding: .8rem 2.4rem;
+  font-size: 1.6rem;
+}
+
+.p-btn1.p-btn1-lg {
+  padding: 1.2rem 5rem;
+  font-size: 1.8rem;
+}
+
+.p-btn1-mob {
+  padding: 10px 40px;
+  background: #227bec;
+  color: #fff;
+  border: 0;
+  box-shadow: inset 0 1px 1px rgb(255 255 255 / 41%), 0px 2px 3px -2px rgba(0, 0, 0, .3);
 }
 
 /** Responsive para movil*/
