@@ -154,7 +154,7 @@ async function vistaDetalladaIncidencia(numIncidencia) {
         element = JSON.parse(element);
         if (element['uid'] == numIncidencia) {
             place.innerHTML = `
-            <h2><strong> ${element["empresa"]} ›› ${element["areadetrabajo"]}</strong> </h2>
+            <h2><strong> ${element["empresa"]} / ${element["areadetrabajo"]}</strong> </h2>
             <p>
             <strong>Datos Generales</strong><br>
             Orden de avería: ${element["averiadeequipo"]} <br>
