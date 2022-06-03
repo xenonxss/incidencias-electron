@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -45,62 +45,73 @@
             <hr>
             <div id="datos-generales">
                 <span>
-                    Nombre Empresa
-                    <input type="text" id="empresa" style="width : 7%;" required>
+                    <label>Empresa</label>
+                    <input type="text" id="empresa" required>
                 </span>
+                <br>
                 <span>
-                    Area de Trabajo
+                    <label>Area de Trabajo</label>
                     <input type="text" id="areadetrabajo">
                 </span>
                 <span>
-                    Usuario
-                    <input type="text" id="usuario" style="width : 7%; ">
+                    <label>Usuario</label>
+                    <input type="text" id="usuario">
+                </span>
+                <br>
+                <span>
+                    <label>Direccion</label>
+                    <input type="text" id="direccion">
                 </span>
                 <span>
-                    Direccion
-                    <input type="text" id="direccion" style="width : 7%; ">
+                    <label>Teléfono</label>
+                    <input type="tel" id="telefono">
                 </span>
+                <br>
                 <span>
-                    Teléfono
-                    <input type="tel" id="telefono" style="width : 5%; ">
+                    <label>Hogar</label>
+                    <input type="text" id="hogar">
                 </span>
+                <br>
                 <span>
-                    Hogar
-                    <input type="text" id="hogar" style="width : 7%;">
-                </span>
-                <span>
-                    Fecha de Entrada
+                    <label>Fecha de Entrada</label>
                     <input type="date" id="fechadeentrada">
                 </span>
+                <br>
                 <span>
-                    Fecha de Salida
+                    <label>Fecha de Salida</label>
                     <input type="date" id="fechadesalida">
                 </span>
             </div>
             <h3>Orden de Trabajo</h3>
             <hr>
-            <span>Equipo
+            <span>
+                <label>Equipo</label>
                 <input type="text" id="equipo">
             </span>
+            <br>
             <span>
-                Modelo
+                <label>Modelo</label>
                 <input type="text" id="modelo">
             </span>
-            <span> Serial
+            <br>
+            <span>
+                <label>Serial</label>
                 <input type="text" id="serial">
             </span>
-            <span> Componentes
+            <br>
+            <span>
+                <label>Componentes</label>
                 <input type="text" id="componentes">
             </span>
             <h3>Averia de equipo</h3>
             <hr>
             <span>
-                <input style="width: 90%;" type="text" id="averiadelequipo" required />
+                <input type="text" id="averiadelequipo" style="width: 90%;" />
             </span>
             <h3>Reparacion del equipo</h3>
             <hr>
             <span>
-                <input style="width:90%;" type="text" id="reparaciondelequipo">
+                <input type="text" id="reparaciondelequipo" style="width: 90%;">
             </span>
             <!---->
             <hr>
