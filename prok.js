@@ -178,11 +178,12 @@ async function vistaDetalladaIncidencia(numIncidencia) {
 
 async function borrarIncidencia(numIncidencia) {
     incidencias = getAll();
+    console.log(incidencias)
     rejoinFinal = "";
     incidencias.forEach(element => {
         element = JSON.parse(element);
         // console.log(element['uid'])
-        if (element['uid'] == 'MY3ytXkq7ztjlcbj4tOiP7sSEdUOu2Pk') {
+        if (element['uid'] == numIncidencia) {
             console.log(`[-]Usted desea eliminar la incidencia ${element['nombre']} de uid: ${element['uid']}`)
         } else {
             rejoin = "[" + JSON.stringify(element) + "]";
