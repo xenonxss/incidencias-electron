@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="proyecto.css">
 </head>
-
 <body>
     <img src="img/hogar_b_logo.jpg" width="35%">
     <br>
@@ -158,8 +157,7 @@
 </body>
 </html>
 <style>
-    body {
-        margin: 0px;
+    body { margin: 0px;
         padding: 0px;
         text-align: center;
         background-color: white;
@@ -173,21 +171,13 @@
         padding: 2px;
     }
 
-    th {
-        border-bottom: 1px;
-    }
+    th { border-bottom: 1px; }
 
-    .l {
-        width: 70%;
-    }
+    .l { width: 70%; }
 
-    .row {
-        float: left;
-        width: 50%;
-    }
+    .row {float: left; width: 50%; }
 
-    img {
-        float: left;
+    img {float: left;
         overflow: hidden;
         position: absolute;
         right: 80%;
@@ -196,40 +186,28 @@
     }
 
     /* Clear floats after the columns */
-    .cositas:after {
-        content: "";
+    .cositas:after {content: "";
         display: table;
         clear: both;
     }
 
-    .texto {
-        font-size: large;
+    .texto {font-size: large;
         font-family: 'Ubuntu', sans-serif;
         padding-bottom: 2px;
     }
 
-    .l-table {
-        width: 100%;
-    }
+    .l-table {width: 100%;}
 
-    h5 {
-        text-align: right;
-    }
+    h5 {text-align: right;}
 
-    .firma {
-        float: right;
+    .firma {float: right;
         border: 3px solid black;
-        width: 15%;
+        width: 15%;}
 
-    }
+    table {border-collapse: collapse;}
 
-    table {
-        border-collapse: collapse;
-    }
+    tr {border-bottom: 1pt solid rgb(202, 202, 202);}
 
-    tr {
-        border-bottom: 1pt solid rgb(202, 202, 202);
-    }
 </style>
 <script>
 
@@ -255,5 +233,10 @@
     document.getElementById('averiadelequipo').innerHTML = currentInc['averiadeequipo'];
     document.getElementById('reparaciondelequipo').innerHTML = currentInc['reparaciondelquipo'];
 
+    setTimeout(() => {
+        print()  
+    window.location.replace('index.html');
+
+    }, 1000);
 
 </script>
