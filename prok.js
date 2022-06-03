@@ -29,7 +29,7 @@ function cargarIncidencias() {
             <td class="t">${element['empresa']}</td>
             <td class="t">${element['averiadeequipo']}</td>
             <td class="b"><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></td>
-            <td class="b" colspan="2"><button class="p-btn" onclick="imprimirInc()"><img src="img/printer.svg"></a></td>
+            <td class="b" colspan="2"><button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg"></a></td>
             <td class="b" colspan="2"><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button></th>
         </tr>`;
     });
@@ -237,7 +237,8 @@ listaIncidencias.innerHTML += `
 <img src="img/linux.png" style="width: 100%;">
 </p>`;
 
-function imprimirInc(){
+function imprimirInc(inc){
+    localStorage.setItem("current-inc", inc);
     window.location.replace('printincidencia.html');
 }
 
