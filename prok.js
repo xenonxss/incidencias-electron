@@ -1,3 +1,4 @@
+
 function getAll() {
     let get = localStorage.getItem('inc');
     function replaceAll(string, search, replace) {
@@ -14,11 +15,7 @@ function getAll() {
 function cargarIncidencias() {
 
     listaIncidencias = document.getElementById('incidencias-lista');
-    listaIncidencias.innerHTML = `
-    <tr class="inc-header">
-        <th colspan="1">Empresa</th>
-        <th colspan="4">descripción</th>
-    <tr>`;
+    listaIncidencias.innerHTML = '';
 
     incidencias = getAll();
 
@@ -30,10 +27,10 @@ function cargarIncidencias() {
         listaIncidencias.innerHTML += `
         
         <tr class="incidencia" scope="col">
-            <th>${element['empresa']}</th>
-            <th>${element['averiadeequipo']}</th>
-            <th><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></th>
-            <th><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver incidencia</button></th>
+            <td class="t">${element['empresa']}</td>
+            <td class="t">${element['averiadeequipo']}</td>
+            <td class="b"><a id="delete-inc" class="p-btn-icon" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></td>
+            <td class="b" colspan="2"><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button></th>
         </tr>`;
     });
 }
@@ -158,25 +155,19 @@ async function vistaDetalladaIncidencia(numIncidencia) {
         if (element['uid'] == numIncidencia) {
             place.innerHTML = `
             <h2><strong> ${element["empresa"]} ›› ${element["areadetrabajo"]}</strong> </h2>
-            <hr>
             <p>
+            <strong>Datos Generales</strong><br>
             Orden de avería: ${element["averiadeequipo"]} <br>
             Usuario: ${element['usuario']} <br>
             Dirección: ${element['direccion']} <br>
             Teléfono: ${element['telefono']} <br>
             Hogar: ${element['hogar']} <br>
-            Fecha de Entrada: ${element['fechadeentrada']} <br>
-            Fecha de Salida: ${element['fechadesalida']} <br>
-            </p>
-            <hr>
-            <p>
-            Componente:  <br>
-            Empresa:    <br>
-            Fecha   <br>
-            Precio: <br>
-            Unidad: <br>
-            </p>
-            `;
+            Fecha Entrada y Salida: ${element['fechadeentrada']} - ${element['fechadesalida']} <br>
+            Equipo: ${element['equipo']}<br>
+            Modelo: ${element['modelo']}<br>
+            Serial: ${element['serial']}<br>
+            Componentes: ${element['componentes']}
+            </p>`;
 
             return console.log(`[+]Mostrando información de la incidencia ${JSON.stringify(element)}`)
         } else {
@@ -242,3 +233,4 @@ let titleTag = document.getElementsByTagName('title')
 setInterval(() => {
     titleTag.text = 'aa';
 }, 2000);
+

@@ -15,12 +15,14 @@
 body {
   margin: 0px;
   padding: 0px;
+  overflow-y: hidden;
+  height: 100%;
+  max-height: 100%;
   height: 100%;
   background-color: rgb(215, 250, 242);
   background: #f2f2f2;
   font-family: 'Ubuntu', sans-serif;
   font-size: 100%;
-  overflow-y: hidden;
 }
 
 /** 
@@ -88,6 +90,7 @@ body {
   border: 4px groove rgb(187, 187, 187);
   overflow-y: scroll;
   font-size: 150%;
+  z-index: 10;
 }
 
 #form-inc h3 {
@@ -115,7 +118,6 @@ body {
   background-color: white;
   height: 100%;
   border-left: 5px gray groove;
-  float: right;
 }
 
 #incidencia-detallada h2,
@@ -138,7 +140,7 @@ p {
   box-shadow: 0px 2px 3px -2px rgba(0, 0, 0, .3);
   user-select: none;
   cursor: pointer;
-  width: 200px;
+  width: 100px;
 }
 
 .p-btn:focus {
@@ -175,15 +177,24 @@ p {
 .table-striped {
   background-color: #ffffff;
   color: black;
-  overflow-y: auto;
+  display: block;
+  table-layout: fixed;
+  height: 80%;
+  width: 100%;
+  overflow-y: scroll;
 }
 
-.table-striped th {
+th,
+td {
   padding: 10px 0px 0px 15px;
-  font-size: 25px;
+  width: 10%;
+  font-size: 150%;
+  text-align: center;
+  word-wrap: break-word;
 }
 
-#items-lista{
+
+#items-lista {
   margin: 10px 5px 10px 5px;
 }
 
@@ -214,12 +225,23 @@ th {
 
 /** Responsive para pc*/
 
-  /**
+/**
   Columnass div incidencias e incidencia detallada
 **/
-.columna {
+.columnadetalle {
+  width: 40%;
+  max-width: 45%;
   float: left;
-  width: 50%;
+  overflow: hidden;
+}
+
+.columna {
+  max-width: 60%;
+  width: 60%;
+  position: fixed;
+  right: 0px;
+  float: left;
+  height: 100%;
 }
 
 .contenidos:after {
@@ -231,17 +253,52 @@ th {
 
 /** Responsive para movil*/
 @media screen and (max-width: 800px) {
-  body{
-    overflow-y: auto;
+  .columnadetalle {
+    border-top: 1px solid black;
+    min-width: 100%;
+    height: 100%;
   }
-  .left-side-bar{
-    width: 100%;
+  .columnadetalle p{
+    font-size: 80%;
   }
-  .columna{
+
+  .contenidos {
+    display: none;
+    clear: none;
+  }
+
+  .columna {
     float: none;
+    position: relative;
+    min-height: 300px;
+    height: 30%;
+    max-height: 400px;
+    max-height: 30%;
     width: 100%;
+    max-width: 99%;
+    overflow-x: hidden;
+  }
+
+  #buscador {
+    width: 70%;
+  }
+
+  .table-striped td .b {
+    text-align: right;
+  }
+
+  .table-striped td .t {
+    text-align: left;
+  }
+
+  .table-striped td {
+    font-size: 12px;
+    min-width: 100%;
+  }
+
+  .table-striped {
+    max-width: 100vh;
+    display: block;
+    max-height: 35vh;
   }
 }
-
-
-
