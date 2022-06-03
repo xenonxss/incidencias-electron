@@ -26,9 +26,12 @@ function cargarIncidencias() {
         <tr class="incidencia" scope="col">
             <td class="t">${element['empresa']}</td>
             <td class="t"><strong>${element['equipo']}</strong> → ${element['averiadeequipo']}</td>
-            <td class="b"><a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a></td>
-            <td class="b" colspan="2"><button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg"></a></td>
-            <td class="b" colspan="2"><button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button></th>
+
+            <td colspan="3" class="b">
+                <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a>
+                <button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg">
+                <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button>
+            </td>
         </tr>`;
     });
 }
@@ -231,8 +234,8 @@ listaIncidencias.innerHTML += `
 <img src="img/linux.png" style="width: 100%;">
 </p>`;
 
-function imprimirInc(inc){
+function imprimirInc(inc) {
     console.log(inc)
-    localStorage.setItem("current-inc", );
+    localStorage.setItem("current-inc",);
     window.location.replace('printincidencia.html');
 }
