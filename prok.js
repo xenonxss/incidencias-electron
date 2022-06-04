@@ -28,7 +28,7 @@ function cargarIncidencias() {
             <td class="t"><strong>${element['equipo']}</strong> → ${element['averiadeequipo']}</td>
 
             <td colspan="3" class="b">
-                <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a>
+                <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}', this.parentElement.parentElement)"><img src="img/trash.svg"></a>
                 <button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg">
                 <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')"><img src="img/eye.svg"></button>
             </td>
@@ -184,7 +184,7 @@ async function vistaDetalladaIncidencia(numIncidencia) {
     });
 }
 
-async function borrarIncidencia(numIncidencia) {
+async function borrarIncidencia(numIncidencia, htmlelement) {
     incidencias = getAll();
     console.log(incidencias)
     rejoinFinal = "";
@@ -200,8 +200,14 @@ async function borrarIncidencia(numIncidencia) {
     });
 
     localStorage.removeItem('inc');
-    localStorage.setItem('inc', rejoinFinal)
-    cargarIncidencias();
+    localStorage.setItem('inc', rejoinFinal);
+
+    console.log(htmlelement)
+    htmlelement.classList.add('slide-paladerecha');
+
+    setTimeout(() => {
+        cargarIncidencias();
+    }, 800);
 }
 
 $('#abrir-formulario').click(function (event) {
