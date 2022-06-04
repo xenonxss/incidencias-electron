@@ -179,8 +179,6 @@ async function vistaDetalladaIncidencia(numIncidencia) {
         } else {
             console.log(`[-]No se ha encontrado la incidencia`)
         }
-
-
     });
 }
 
