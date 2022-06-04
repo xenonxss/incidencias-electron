@@ -29,13 +29,8 @@ function cargarIncidencias() {
 
             <td colspan="3" class="b">
                 <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}')"><img src="img/trash.svg"></a>
-<<<<<<< HEAD
                 <button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg">
                 <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')"><img src="img/eye.svg"></button>
-=======
-                <button class="p-btn" onclick="imprimirInc('${element['uid']}')"><img src="img/printer.svg">
-                <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')">Ver</button>
->>>>>>> e796318bd74bf253441e716dd297da61657788ec
             </td>
         </tr>`;
     });
@@ -131,11 +126,13 @@ $('#subirIncidencia').click(function (event) {
         form = document.getElementById('form-inc')
         form.classList.remove('aparecer');
         form.classList.add('desaparecer');
+
         setTimeout(() => {
             form.setAttribute('hidden', true);
-            location.reload();
-
         }, 800);
+
+        cargarIncidencias();
+
     })
 });
 
