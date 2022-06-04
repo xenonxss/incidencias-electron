@@ -29,7 +29,7 @@ function cargarIncidencias() {
 
             <td colspan="3" class="b">
                 <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}', this.parentElement.parentElement)"><img src="img/trash.svg"></a>
-                <button class="p-btn" onclick="imprimirInc('${element}')"><img src="img/printer.svg">
+                <button class="p-btn" onclick="imprimirInc('${element['uid']}')"><img src="img/printer.svg">
                 <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')"><img src="img/eye.svg"></button>
             </td>
         </tr>`;
@@ -248,9 +248,12 @@ function imprimirInc(inc) {
 
     allInc.forEach(element => {
         element = JSON.parse(element);
+        console.log(element)
         if (element['uid'] == inc) {
             localStorage.setItem('current-inc', JSON.stringify(element));
             window.location.replace('printincidencia.html');
+        }else{
+            console.log('a')
         }
     });
 
