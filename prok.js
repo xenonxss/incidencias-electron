@@ -31,6 +31,7 @@ function cargarIncidencias() {
                 <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}', this.parentElement.parentElement)"><img src="img/trash.svg"></a>
                 <button class="p-btn" onclick="imprimirInc('${element['uid']}')"><img src="img/printer.svg">
                 <button class="p-btn" onclick="vistaDetalladaIncidencia('${element['uid']}')"><img src="img/eye.svg"></button>
+                <button class="p-btn" onclick="editarIncidencia('${element['uid']}')"><img src="img/edit-3.svg"></button>
             </td>
         </tr>`;
     });
