@@ -160,7 +160,8 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             Equipo: ${element['equipo']}<br>
             Modelo: ${element['modelo']}<br>
             Serial: ${element['serial']}<br>
-            Componentes: ${element['componentes']}
+            Componentes: ${element['componentes']}<br>
+            Orden Reparación: ${element['reparaciondelequipo']}
             </p>`;
 
             localStorage.setItem("current-inc", JSON.stringify(element));
@@ -241,62 +242,11 @@ function imprimirInc(inc) {
             console.log('a')
         }
     });
-
 }
-
 
 function editarIncidencia(numIncidencia) {
 
-
-    function actualizarInc(inc) {
-        /* Datos generales */
-        let empresa = document.getElementById('editempresa').value;
-        let areadetrabajo = document.getElementById('editareadetrabajo').value;
-        let usuario = document.getElementById('editusuario').value;
-        let direccion = document.getElementById('editdireccion').value;
-        let telefono = document.getElementById('edittelefono').value;
-        let hogar = document.getElementById('edithogar').value;
-        let fechadeentrada = document.getElementById('editfechadeentrada').value;
-        let fechadesalida = document.getElementById('editfechadesalida').value;
-        /** Orden de trabajo */
-        let equipo = document.getElementById('editequipo').value;
-        let modelo = document.getElementById('editmodelo').value;
-        let serial = document.getElementById('editserial').value;
-        let componentes = document.getElementById('editcomponentes').value;
-        /** Averia de equipo */
-        let averiadeequipo = document.getElementById('editaveriadelequipo').value;
-        /** Reparacion del equipo */
-        let reparacion = document.getElementById('editreparaciondelequipo').value;
-
-
-        incidencia = [{
-            // datos generales
-            "uid": element['uid'],
-            "empresa": empresa,
-            "areadetrabajo": areadetrabajo,
-            "usuario": usuario,
-            "direccion": direccion,
-            "telefono": telefono,
-            "hogar": hogar,
-            "fechadeentrada": fechadeentrada,
-            "fechadesalida": fechadesalida,
-            //orden de trabajo
-            "equipo": equipo,
-            "modelo": modelo,
-            "serial": serial,
-            "componentes": componentes,
-            //averia del equipo
-            "averiadeequipo": averiadeequipo,
-            "reparaciondelequipo": reparacion,
-            //material de reparacion
-        }];
-
-        console.log(incidencia)
-
-    }
-
     let place = document.getElementById('incidencia-detallada');
-
     let incidencias = getAll();
 
     incidencias.forEach(element => {
@@ -316,15 +266,86 @@ function editarIncidencia(numIncidencia) {
                 Equipo: <input id="editequipo" type="text" value="${element['equipo']}"><br>
                 Modelo: <input id="editmodelo" type="text" value="${element['modelo']}"><br>
                 Serial: <input id="editserial" type="text" value="${element['serial']}"><br>
-                Componentes: <input id="editcomponentes" type="text" value="${element['componentes']}">
-
+                Componentes: <input id="editcomponentes" type="text" value="${element['componentes']}"><br>
+                Orden Reparación: <input id="editreparaciondelequipo" type="text" value="${element['reparaciondelequipo']}">
                 <br>
-                <input id="btnactualizar" type="button" value="Actualizar" onclick="actualizarInc('${element['uid']}')">
+                <input id="btnactualizar" type="button" value="Actualizar">
             </form>
             </p>`;
-
-
             localStorage.setItem("current-inc", JSON.stringify(element));
         }
     });
+
+    $('#btnactualizar').click(() => {
+        /* Datos generales */
+        let empresa = document.getElementById('editempresa').value;
+        let areadetrabajo = document.getElementById('editareadetrabajo').value;
+        let usuario = document.getElementById('editusuario').value;
+        let direccion = document.getElementById('editdireccion').value;
+        let telefono = document.getElementById('edittelefono').value;
+        let hogar = document.getElementById('edithogar').value;
+        let fechadeentrada = document.getElementById('editfechaentrada').value;
+        let fechadesalida = document.getElementById('editfechasalida').value;
+        /** Orden de trabajo */
+        let equipo = document.getElementById('editequipo').value;
+        let modelo = document.getElementById('editmodelo').value;
+        let serial = document.getElementById('editserial').value;
+        let componentes = document.getElementById('editcomponentes').value;
+        /** Averia de equipo */
+        let averiadeequipo = document.getElementById('editaveriadelequipo').value;
+        /** Reparacion del equipo */
+        let reparacion = document.getElementById('editreparaciondelequipo').value;
+
+        incidencia = [{
+            // datos generales
+            "uid": JSON.parse(localStorage.getItem('current-inc'))['uid'],
+            "empresa": empresa,
+            "areadetrabajo": areadetrabajo,
+            "usuario": usuario,
+            "direccion": direccion,
+            "telefono": telefono,
+            "hogar": hogar,
+            "fechadeentrada": fechadeentrada,
+            "fechadesalida": fechadesalida,
+            //orden de trabajo
+            "equipo": equipo,
+            "modelo": modelo,
+            "serial": serial,
+            "componentes": componentes,
+            //averia del equipo
+            "averiadeequipo": averiadeequipo,
+            "reparaciondelequipo": reparacion,
+            //material de reparacion
+        }];
+
+        console.log(incidencia);
+
+        incidencias = getAll();
+        rejoinFinal = "";
+        incidencias.forEach(element => {
+            element = JSON.parse(element);
+
+            if (element['uid'] == JSON.parse(localStorage.getItem('current-inc'))['uid']) {
+                console.log(`[+]Usted desea ACTUALIZAR la incidencia ${element['uid']}`);
+            } else {
+                rejoin = "[" + JSON.stringify(element) + "]";
+                rejoinFinal = rejoinFinal + rejoin;
+            }
+        });
+
+        localStorage.removeItem('inc');
+        localStorage.setItem('inc', rejoinFinal);
+
+        old = localStorage.getItem('inc');
+        if (old == null) { old = ""; }
+
+        localStorage.removeItem('inc')
+        localStorage.setItem('inc', old.concat(JSON.stringify(incidencia)));
+
+        vistaDetalladaIncidencia(JSON.parse(localStorage.getItem('current-inc'))['uid']);
+        cargarIncidencias();
+
+    });
 }
+
+
