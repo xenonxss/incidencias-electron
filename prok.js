@@ -242,3 +242,65 @@ function imprimirInc(inc) {
     });
 
 }
+
+
+function editarIncidencia(numIncidencia) {
+
+    let place = document.getElementById('incidencia-detallada');
+
+    let incidencias = getAll();
+
+    incidencias.forEach(element => {
+        element = JSON.parse(element);
+        if (element['uid'] == numIncidencia) {
+            place.innerHTML = `
+            <h2><input id="editempresa" type="text" value='${element["empresa"]}'>  / <input id="editareadetrabajo" type="text" value="${element["areadetrabajo"]}"></h2>
+            <p>
+            <form>
+                <strong>Datos Generales</strong><br>
+                Orden de avería: <input id="editaveriadelequipo" type="text" value="${element["averiadeequipo"]}"> <br>
+                Usuario: <input id="editusuario" type="text" value="${element['usuario']}"> <br>
+                Dirección: <input id="editdireccion" type="text" value="${element['direccion']}"> <br>
+                Teléfono: <input id="edittelefono" type="tel" value="${element['telefono']}"> <br>
+                Hogar: <input id="edithogar" type="text" value="${element['hogar']}"> <br>
+                Fecha Entrada y Salida: <input type="date" value="${element['fechadeentrada']}"> - <input type="date" value="${element['fechadesalida']}"> <br>
+                Equipo: <input id="editequipo" type="text" value="${element['equipo']}"><br>
+                Modelo: <input id="editmodelo" type="text" value="${element['modelo']}"><br>
+                Serial: <input id="editserial" type="text" value="${element['serial']}"><br>
+                Componentes: <input id="editcomponentes" type="text" value="${element['componentes']}">
+
+                <br>
+                <input id="btnactualizar" type="button" value="Actualizar" onclick="actualizarInc(${element['uid']})">
+            </form>
+            </p>`;
+
+            /* Datos generales */
+            let empresa = document.getElementById('editempresa').value;
+            let areadetrabajo = document.getElementById('editareadetrabajo').value;
+            let usuario = document.getElementById('editusuario').value;
+            let direccion = document.getElementById('editdireccion').value;
+            let telefono = document.getElementById('edittelefono').value;
+            let hogar = document.getElementById('edithogar').value;
+            let fechadeentrada = document.getElementById('editfechadeentrada').value;
+            let fechadesalida = document.getElementById('editfechadesalida').value;
+            /** Orden de trabajo */
+            let equipo = document.getElementById('editequipo').value;
+            let modelo = document.getElementById('editmodelo').value;
+            let serial = document.getElementById('editserial').value;
+            let componentes = document.getElementById('editcomponentes').value;
+            /** Averia de equipo */
+            let averiadeequipo = document.getElementById('editaveriadelequipo').value;
+            /** Reparacion del equipo */
+            let reparacion = document.getElementById('editreparaciondelequipo').value;
+
+            generarIncidencia(
+                empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida,
+                equipo, modelo, serial, componentes,
+                averiadeequipo,
+                reparacion
+            )
+
+            localStorage.setItem("current-inc", JSON.stringify(element));
+        }
+    });
+}
