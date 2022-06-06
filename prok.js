@@ -4,7 +4,6 @@ function getAll() {
     function replaceAll(string, search, replace) {
         return string.split(search).join(replace);
     }
-
     incidencias_todas = replaceAll(get, ']', '');
     incidencias_todas = incidencias_todas.split('[');
     incidencias_todas.shift();
@@ -13,7 +12,6 @@ function getAll() {
 }
 
 function cargarIncidencias() {
-
     listaIncidencias = document.getElementById('incidencias-lista');
     listaIncidencias.innerHTML = '';
 
@@ -21,12 +19,10 @@ function cargarIncidencias() {
 
     incidencias.forEach(element => {
         element = JSON.parse(element);
-
         listaIncidencias.innerHTML += `
         <tr class="incidencia" scope="col">
             <td class="t">${element['empresa']}</td>
             <td class="t"><strong>${element['equipo']}</strong> → ${element['averiadeequipo']}</td>
-
             <td colspan="3" class="b">
                 <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}', this.parentElement.parentElement)"><img src="img/trash.svg"></a>
                 <button class="p-btn" onclick="imprimirInc('${element['uid']}')"><img src="img/printer.svg">
@@ -71,24 +67,19 @@ async function generarIncidencia(empresa, areadetrabajo, usuario, direccion, tel
         "hogar": hogar,
         "fechadeentrada": fechadeentrada,
         "fechadesalida": fechadesalida,
-
         //orden de trabajo
         "equipo": equipo,
         "modelo": modelo,
         "serial": serial,
         "componentes": componentes,
-
         //averia del equipo
         "averiadeequipo": averiadeequipo,
         "reparaciondelequipo": reparaciondelequipo,
-
         //material de reparacion
-        // "componentes": [componentes],
     }];
 
     old = localStorage.getItem('inc');
     if (old == null) { old = ""; }
-
 
     localStorage.removeItem('inc')
     localStorage.setItem('inc', old.concat(JSON.stringify(incidencia)));
@@ -150,15 +141,12 @@ $('#buscador').keyup(function () {
 
 async function vistaDetalladaIncidencia(numIncidencia) {
 
-    place = document.getElementById('incidencia-detallada');
-    incidencias = getAll();
+    let place = document.getElementById('incidencia-detallada');
+    let incidencias = getAll();
 
     incidencias.forEach(element => {
         element = JSON.parse(element);
         if (element['uid'] == numIncidencia) {
-
-            console.log('[+]Incidencia encontrada!')
-
             place.innerHTML = `
             <h2><strong> ${element["empresa"]}  / ${element["areadetrabajo"]}</strong> </h2>
             <p>
@@ -175,22 +163,19 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             Componentes: ${element['componentes']}
             </p>`;
 
-            localStorage.setItem("current-inc", JSON.stringify(element))
-
-            return console.log(`[+]Informacion detallada cargada`)
-        } else {
-            console.log(`[-]No se ha encontrado la incidencia`)
+            localStorage.setItem("current-inc", JSON.stringify(element));
         }
     });
+
+    return console.log(`[+]Informacion detallada cargada`);
 }
 
 async function borrarIncidencia(numIncidencia, htmlelement) {
     incidencias = getAll();
-    console.log(incidencias)
     rejoinFinal = "";
     incidencias.forEach(element => {
         element = JSON.parse(element);
-        // console.log(element['uid'])
+
         if (element['uid'] == numIncidencia) {
             console.log(`[-]Usted desea eliminar la incidencia ${element['nombre']} de uid: ${element['uid']}`)
         } else {
@@ -252,9 +237,94 @@ function imprimirInc(inc) {
         if (element['uid'] == inc) {
             localStorage.setItem('current-inc', JSON.stringify(element));
             window.location.replace('printincidencia.html');
-        }else{
+        } else {
             console.log('a')
         }
     });
 
+}
+
+
+function editarIncidencia(numIncidencia) {
+
+
+    function actualizarInc(inc) {
+        /* Datos generales */
+        let empresa = document.getElementById('editempresa').value;
+        let areadetrabajo = document.getElementById('editareadetrabajo').value;
+        let usuario = document.getElementById('editusuario').value;
+        let direccion = document.getElementById('editdireccion').value;
+        let telefono = document.getElementById('edittelefono').value;
+        let hogar = document.getElementById('edithogar').value;
+        let fechadeentrada = document.getElementById('editfechadeentrada').value;
+        let fechadesalida = document.getElementById('editfechadesalida').value;
+        /** Orden de trabajo */
+        let equipo = document.getElementById('editequipo').value;
+        let modelo = document.getElementById('editmodelo').value;
+        let serial = document.getElementById('editserial').value;
+        let componentes = document.getElementById('editcomponentes').value;
+        /** Averia de equipo */
+        let averiadeequipo = document.getElementById('editaveriadelequipo').value;
+        /** Reparacion del equipo */
+        let reparacion = document.getElementById('editreparaciondelequipo').value;
+
+
+        incidencia = [{
+            // datos generales
+            "uid": element['uid'],
+            "empresa": empresa,
+            "areadetrabajo": areadetrabajo,
+            "usuario": usuario,
+            "direccion": direccion,
+            "telefono": telefono,
+            "hogar": hogar,
+            "fechadeentrada": fechadeentrada,
+            "fechadesalida": fechadesalida,
+            //orden de trabajo
+            "equipo": equipo,
+            "modelo": modelo,
+            "serial": serial,
+            "componentes": componentes,
+            //averia del equipo
+            "averiadeequipo": averiadeequipo,
+            "reparaciondelequipo": reparacion,
+            //material de reparacion
+        }];
+
+        console.log(incidencia)
+
+    }
+
+    let place = document.getElementById('incidencia-detallada');
+
+    let incidencias = getAll();
+
+    incidencias.forEach(element => {
+        element = JSON.parse(element);
+        if (element['uid'] == numIncidencia) {
+            place.innerHTML = `
+            <h2><input id="editempresa" type="text" value='${element["empresa"]}'>  / <input id="editareadetrabajo" type="text" value="${element["areadetrabajo"]}"></h2>
+            <p>
+            <form>
+                <strong>Datos Generales</strong><br>
+                Orden de avería: <input id="editaveriadelequipo" type="text" value="${element["averiadeequipo"]}"> <br>
+                Usuario: <input id="editusuario" type="text" value="${element['usuario']}"> <br>
+                Dirección: <input id="editdireccion" type="text" value="${element['direccion']}"> <br>
+                Teléfono: <input id="edittelefono" type="tel" value="${element['telefono']}"> <br>
+                Hogar: <input id="edithogar" type="text" value="${element['hogar']}"> <br>
+                Fecha Entrada y Salida: <input id="editfechaentrada" type="date" value="${element['fechadeentrada']}"> - <input id="editfechasalida" type="date" value="${element['fechadesalida']}"> <br>
+                Equipo: <input id="editequipo" type="text" value="${element['equipo']}"><br>
+                Modelo: <input id="editmodelo" type="text" value="${element['modelo']}"><br>
+                Serial: <input id="editserial" type="text" value="${element['serial']}"><br>
+                Componentes: <input id="editcomponentes" type="text" value="${element['componentes']}">
+
+                <br>
+                <input id="btnactualizar" type="button" value="Actualizar" onclick="actualizarInc('${element['uid']}')">
+            </form>
+            </p>`;
+
+
+            localStorage.setItem("current-inc", JSON.stringify(element));
+        }
+    });
 }
