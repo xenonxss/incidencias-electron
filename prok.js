@@ -246,6 +246,54 @@ function imprimirInc(inc) {
 
 function editarIncidencia(numIncidencia) {
 
+
+    function actualizarInc(inc) {
+        /* Datos generales */
+        let empresa = document.getElementById('editempresa').value;
+        let areadetrabajo = document.getElementById('editareadetrabajo').value;
+        let usuario = document.getElementById('editusuario').value;
+        let direccion = document.getElementById('editdireccion').value;
+        let telefono = document.getElementById('edittelefono').value;
+        let hogar = document.getElementById('edithogar').value;
+        let fechadeentrada = document.getElementById('editfechadeentrada').value;
+        let fechadesalida = document.getElementById('editfechadesalida').value;
+        /** Orden de trabajo */
+        let equipo = document.getElementById('editequipo').value;
+        let modelo = document.getElementById('editmodelo').value;
+        let serial = document.getElementById('editserial').value;
+        let componentes = document.getElementById('editcomponentes').value;
+        /** Averia de equipo */
+        let averiadeequipo = document.getElementById('editaveriadelequipo').value;
+        /** Reparacion del equipo */
+        let reparacion = document.getElementById('editreparaciondelequipo').value;
+
+
+        incidencia = [{
+            // datos generales
+            "uid": element['uid'],
+            "empresa": empresa,
+            "areadetrabajo": areadetrabajo,
+            "usuario": usuario,
+            "direccion": direccion,
+            "telefono": telefono,
+            "hogar": hogar,
+            "fechadeentrada": fechadeentrada,
+            "fechadesalida": fechadesalida,
+            //orden de trabajo
+            "equipo": equipo,
+            "modelo": modelo,
+            "serial": serial,
+            "componentes": componentes,
+            //averia del equipo
+            "averiadeequipo": averiadeequipo,
+            "reparaciondelequipo": reparacion,
+            //material de reparacion
+        }];
+
+        console.log(incidencia)
+
+    }
+
     let place = document.getElementById('incidencia-detallada');
 
     let incidencias = getAll();
@@ -270,53 +318,10 @@ function editarIncidencia(numIncidencia) {
                 Componentes: <input id="editcomponentes" type="text" value="${element['componentes']}">
 
                 <br>
-                <input id="btnactualizar" type="button" value="Actualizar" onclick="actualizarInc(${element['uid']})">
+                <input id="btnactualizar" type="button" value="Actualizar" onclick="actualizarInc('${element['uid']}')">
             </form>
             </p>`;
 
-            /* Datos generales */
-            let empresa = document.getElementById('editempresa').value;
-            let areadetrabajo = document.getElementById('editareadetrabajo').value;
-            let usuario = document.getElementById('editusuario').value;
-            let direccion = document.getElementById('editdireccion').value;
-            let telefono = document.getElementById('edittelefono').value;
-            let hogar = document.getElementById('edithogar').value;
-            let fechadeentrada = document.getElementById('editfechadeentrada').value;
-            let fechadesalida = document.getElementById('editfechadesalida').value;
-            /** Orden de trabajo */
-            let equipo = document.getElementById('editequipo').value;
-            let modelo = document.getElementById('editmodelo').value;
-            let serial = document.getElementById('editserial').value;
-            let componentes = document.getElementById('editcomponentes').value;
-            /** Averia de equipo */
-            let averiadeequipo = document.getElementById('editaveriadelequipo').value;
-            /** Reparacion del equipo */
-            let reparacion = document.getElementById('editreparaciondelequipo').value;
-
-
-            incidencia = [{
-                // datos generales
-                "uid": element['uid'],
-                "empresa": empresa,
-                "areadetrabajo": areadetrabajo,
-                "usuario": usuario,
-                "direccion": direccion,
-                "telefono": telefono,
-                "hogar": hogar,
-                "fechadeentrada": fechadeentrada,
-                "fechadesalida": fechadesalida,
-                //orden de trabajo
-                "equipo": equipo,
-                "modelo": modelo,
-                "serial": serial,
-                "componentes": componentes,
-                //averia del equipo
-                "averiadeequipo": averiadeequipo,
-                "reparaciondelequipo": reparacion,
-                //material de reparacion
-            }];
-
-            console.log(incidencia)
 
             localStorage.setItem("current-inc", JSON.stringify(element));
         }
