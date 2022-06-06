@@ -263,7 +263,7 @@ function editarIncidencia(numIncidencia) {
                 Dirección: <input id="editdireccion" type="text" value="${element['direccion']}"> <br>
                 Teléfono: <input id="edittelefono" type="tel" value="${element['telefono']}"> <br>
                 Hogar: <input id="edithogar" type="text" value="${element['hogar']}"> <br>
-                Fecha Entrada y Salida: <input type="date" value="${element['fechadeentrada']}"> - <input type="date" value="${element['fechadesalida']}"> <br>
+                Fecha Entrada y Salida: <input id="editfechaentrada" type="date" value="${element['fechadeentrada']}"> - <input id="editfechasalida" type="date" value="${element['fechadesalida']}"> <br>
                 Equipo: <input id="editequipo" type="text" value="${element['equipo']}"><br>
                 Modelo: <input id="editmodelo" type="text" value="${element['modelo']}"><br>
                 Serial: <input id="editserial" type="text" value="${element['serial']}"><br>
@@ -293,12 +293,30 @@ function editarIncidencia(numIncidencia) {
             /** Reparacion del equipo */
             let reparacion = document.getElementById('editreparaciondelequipo').value;
 
-            generarIncidencia(
-                empresa, areadetrabajo, usuario, direccion, telefono, hogar, fechadeentrada, fechadesalida,
-                equipo, modelo, serial, componentes,
-                averiadeequipo,
-                reparacion
-            )
+
+            incidencia = [{
+                // datos generales
+                "uid": element['uid'],
+                "empresa": empresa,
+                "areadetrabajo": areadetrabajo,
+                "usuario": usuario,
+                "direccion": direccion,
+                "telefono": telefono,
+                "hogar": hogar,
+                "fechadeentrada": fechadeentrada,
+                "fechadesalida": fechadesalida,
+                //orden de trabajo
+                "equipo": equipo,
+                "modelo": modelo,
+                "serial": serial,
+                "componentes": componentes,
+                //averia del equipo
+                "averiadeequipo": averiadeequipo,
+                "reparaciondelequipo": reparacion,
+                //material de reparacion
+            }];
+
+            console.log(incidencia)
 
             localStorage.setItem("current-inc", JSON.stringify(element));
         }
