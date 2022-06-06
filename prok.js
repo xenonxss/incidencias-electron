@@ -4,7 +4,6 @@ function getAll() {
     function replaceAll(string, search, replace) {
         return string.split(search).join(replace);
     }
-
     incidencias_todas = replaceAll(get, ']', '');
     incidencias_todas = incidencias_todas.split('[');
     incidencias_todas.shift();
@@ -13,7 +12,6 @@ function getAll() {
 }
 
 function cargarIncidencias() {
-
     listaIncidencias = document.getElementById('incidencias-lista');
     listaIncidencias.innerHTML = '';
 
@@ -21,12 +19,10 @@ function cargarIncidencias() {
 
     incidencias.forEach(element => {
         element = JSON.parse(element);
-
         listaIncidencias.innerHTML += `
         <tr class="incidencia" scope="col">
             <td class="t">${element['empresa']}</td>
             <td class="t"><strong>${element['equipo']}</strong> → ${element['averiadeequipo']}</td>
-
             <td colspan="3" class="b">
                 <a id="delete-inc" class="p-btn" onclick="borrarIncidencia('${element['uid']}', this.parentElement.parentElement)"><img src="img/trash.svg"></a>
                 <button class="p-btn" onclick="imprimirInc('${element['uid']}')"><img src="img/printer.svg">
@@ -70,24 +66,19 @@ async function generarIncidencia(empresa, areadetrabajo, usuario, direccion, tel
         "hogar": hogar,
         "fechadeentrada": fechadeentrada,
         "fechadesalida": fechadesalida,
-
         //orden de trabajo
         "equipo": equipo,
         "modelo": modelo,
         "serial": serial,
         "componentes": componentes,
-
         //averia del equipo
         "averiadeequipo": averiadeequipo,
         "reparaciondelequipo": reparaciondelequipo,
-
         //material de reparacion
-        // "componentes": [componentes],
     }];
 
     old = localStorage.getItem('inc');
     if (old == null) { old = ""; }
-
 
     localStorage.removeItem('inc')
     localStorage.setItem('inc', old.concat(JSON.stringify(incidencia)));
@@ -149,15 +140,12 @@ $('#buscador').keyup(function () {
 
 async function vistaDetalladaIncidencia(numIncidencia) {
 
-    place = document.getElementById('incidencia-detallada');
-    incidencias = getAll();
+    let place = document.getElementById('incidencia-detallada');
+    let incidencias = getAll();
 
     incidencias.forEach(element => {
         element = JSON.parse(element);
         if (element['uid'] == numIncidencia) {
-
-            console.log('[+]Incidencia encontrada!')
-
             place.innerHTML = `
             <h2><strong> ${element["empresa"]}  / ${element["areadetrabajo"]}</strong> </h2>
             <p>
@@ -174,22 +162,19 @@ async function vistaDetalladaIncidencia(numIncidencia) {
             Componentes: ${element['componentes']}
             </p>`;
 
-            localStorage.setItem("current-inc", JSON.stringify(element))
-
-            return console.log(`[+]Informacion detallada cargada`)
-        } else {
-            console.log(`[-]No se ha encontrado la incidencia`)
+            localStorage.setItem("current-inc", JSON.stringify(element));
         }
     });
+
+    return console.log(`[+]Informacion detallada cargada`);
 }
 
 async function borrarIncidencia(numIncidencia, htmlelement) {
     incidencias = getAll();
-    console.log(incidencias)
     rejoinFinal = "";
     incidencias.forEach(element => {
         element = JSON.parse(element);
-        // console.log(element['uid'])
+
         if (element['uid'] == numIncidencia) {
             console.log(`[-]Usted desea eliminar la incidencia ${element['nombre']} de uid: ${element['uid']}`)
         } else {
@@ -251,7 +236,7 @@ function imprimirInc(inc) {
         if (element['uid'] == inc) {
             localStorage.setItem('current-inc', JSON.stringify(element));
             window.location.replace('printincidencia.html');
-        }else{
+        } else {
             console.log('a')
         }
     });
